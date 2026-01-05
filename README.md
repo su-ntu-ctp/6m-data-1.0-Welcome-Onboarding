@@ -6,7 +6,9 @@
 
 * Complete [First Time Software Installation](./installation.md)
 
-## **📅 Agenda**
+---
+
+## **📅 In-Class Agenda**
 
 | Time | Activity | Description |
 | ---  | ---      | ---         |
@@ -15,6 +17,7 @@
 | 1:45 \- 2:15 | 🛠️ Workshop | How to use NotebookLM & "Prompt Engineering 101" |
 | 2:15 \- 3:00 | 🤖 Activity | Learning Community: Discord / Software installation trouble-shooting | 
 
+---
 
 ## **🎯 Learning Outcomes**
 
@@ -23,6 +26,8 @@ By the end of this session, you will be able to:
 1. Navigate the course structure and understand the "1 Million Row" capstone goal.  
 2. Use **Google NotebookLM** to summarize technical documents and generate self-assessment quizzes.
 3. Use **Discord** to share and discuss with facilitators and learners community.
+
+---
 
 ## **📂 Resources & Links**
 
