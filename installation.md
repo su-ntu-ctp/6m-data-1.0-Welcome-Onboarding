@@ -161,9 +161,9 @@ Alternatively, you can use another Duckdb browser called Dbeaver, you can downlo
 
 - Please refer to the following exercise [here](guides/run_conda_python.md) to see if you can create a conda environment and run a python file to create a test database. Please proceed to next step if you manage to run the command without errors.
 
-- To confirm if you can see the data, open `DBeaver` or `DbGate` and connect to the test database `test_duck.db`. 
-    - For DBeaver user please following the guide [here](guides/dbeaver_connect.md)
+- To confirm if you can see the data, open `DbGate` or `DBeaver` and connect to the test database `test_duck.db`. 
     - For DbGate user please follow the guide [here](guides/dbgate_connect.md)
+    - For DBeaver user please following the guide [here](guides/dbeaver_connect(optional).md)
 
 Please make sure you can see 3 records.
 

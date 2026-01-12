@@ -32,4 +32,4 @@ Step 7 : Run the command:
 python create_db_data.py
 ```
 
-If you can complete all steps without error then your conda installation is good.
+If you can complete all steps without error then your conda installation is good. A new file called `test_duck.db` will be created.
