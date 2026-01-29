@@ -6,7 +6,7 @@
 
 **The Final Destination:**
 
-*By Class 15, you will analyze a database with 1+ million records and present a professional dashboard identifying key business insights.*
+*By end of module 1, you will analyze a database with 1+ million records and present a professional dashboard identifying key business insights.*
 
 ### **🟢 Phase 1: The Foundation (Setting the Mindset)**
 

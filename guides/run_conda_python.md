@@ -5,7 +5,7 @@ Step 0 : Launch VSCode. (Windows users please make sure you are connected to WSL
 
 Step 1 : Open the folder of lesson 1.1 which you have clone to your PC. Alternatively, you can also use command:
 ```bash
-cd 5m-data-1.1-intro-data-science
+cd 6m-data-1.0-Welcome-Onboarding
 ```
 
 Step 2 : Open the terminal in VSCode by clicking `...` > `Terminal` > `New Terminal` to open a new terminal windows
