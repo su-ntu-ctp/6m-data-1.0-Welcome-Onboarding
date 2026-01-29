@@ -1,3 +1,5 @@
 .DS_Store
 venv/*
 oryx-build-commands.txt
+.venv/
+__pycache__/

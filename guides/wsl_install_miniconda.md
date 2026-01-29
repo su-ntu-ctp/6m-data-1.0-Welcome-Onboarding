@@ -8,10 +8,14 @@ Step 0: Identify which CPU you are using.
 
 Step 1: Using the following code to download the software:
 
+
+**Intel CPU**
 ```bash
-# Intel CPU
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-# Windows Laptop that uses ARM CPU
+```
+
+**Windows Laptop that uses ARM CPU**
+```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh
 ```
 
@@ -19,10 +23,14 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh
 
 
 Step 2: Using the following code to install the software:
+
+**Intel CPU**
 ```bash
-# Intel CPU
 bash ~/Miniconda3-latest-Linux-x86_64.sh
-# ARM CPU
+```
+
+**ARM CPU**
+```bash
 bash ~/Miniconda3-latest-Linux-aarch64.sh
 ```
 

@@ -6,6 +6,8 @@
 - Recommended 50GB available hard disk storage space (HDD/SSD)
 - Webcam and microphone for online Zoom sessions
 
+ **WARNING: Intel Mac is no longer supported, please consult with your instructors for alternative.**
+
 ## Software Requirements
 
 - WSL (for Windows users only)
@@ -185,7 +187,7 @@ Please make sure you can see 3 records.
 - **Ans:** You don't need to worry about the version of Python during installation. We use `conda` to managed different versions of python, ensuring compatibility as needed.  
 
 3. **I have Anaconda installed do I need to install Miniconda?**
-- **Ans:** No need. Once Anaconda is installed, you can access the same conda environment from VSCode.
+- **Ans:** No need for Mac User. Once Anaconda is installed, you can access the same conda environment from VSCode. For Windows user, since we will be developing in WSL, you need to install Miniconda in WSL.
 
 4. **Can I use Anaconda instead of VSCode?**
 - **Ans:** For Windows users, VSCode is the preferred option because it integrates seamlessly with the WSL. On macOS, you can technically use Anaconda instead of VSCode, but keep in mind that our lesson instructions are designed around VSCode. VSCode is also lighter and faster compared to Anaconda. If you are already comfortable with Anaconda, we still encourage you to give VSCode a try.
