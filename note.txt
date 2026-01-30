@@ -1,1 +1,2 @@
 Git is a time machine.
+This is 7th test.
