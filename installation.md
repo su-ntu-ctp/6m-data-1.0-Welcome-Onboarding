@@ -10,11 +10,14 @@
 
 ## Software Requirements
 
-- WSL (for Windows users only)
-- Visual Studio Code (VSCode) or any source code editor
-- Git Command-Line Interface (CLI)
-- Conda/Miniconda
-- DbGate database manager
+| Software | Description | Platform | Details |
+|----------|-------------|----------|---------|
+| WSL | Windows Subsystem for Linux | Windows only | [Installation Guide](#wsl-for-windows) |
+| Visual Studio Code (VSCode) | Source code editor | All platforms | [Installation Guide](#visual-studio-code-vscode) |
+| Git CLI | Command-Line Interface for version control | All platforms | [Installation Guide](#git-cli) |
+| Conda/Miniconda | Package and environment manager | All platforms | [Installation Guide](#condaminiconda) |
+| DBeaver/DBGate | Database viewer | All platforms | [Installation Guide](#duckdb-browser-dbgate) |
+| Test Installation | Confirm if everything is working fine | All platforms | [Verification Guide](#verification-of-installation-mac-and-windows-users) |
 
 ## WSL for Windows
 
@@ -165,6 +168,7 @@ Download and install DbGate Community version [here](https://www.dbgate.io/downl
 
 ![alt text](assets/dbGate.png)
 
+### Alternative 
 Alternatively, you can use another Duckdb browser called Dbeaver, you can download and install DBeaver Community [here](https://dbeaver.io/download/)
 
 ## Verification of Installation (Mac and Windows Users)
