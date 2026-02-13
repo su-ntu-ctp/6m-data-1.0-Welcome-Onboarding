@@ -194,7 +194,7 @@ Please make sure you can see 3 records.
 - **Ans:** No need for Mac User. Once Anaconda is installed, you can access the same conda environment from VSCode. For Windows user, since we will be developing in WSL, you need to install Miniconda in WSL.
 
 4. **Can I use Anaconda instead of VSCode?**
-- **Ans:** For Windows users, VSCode is the preferred option because it integrates seamlessly with the WSL. On macOS, you can technically use Anaconda instead of VSCode, but keep in mind that our lesson instructions are designed around VSCode. VSCode is also lighter and faster compared to Anaconda. If you are already comfortable with Anaconda, we still encourage you to give VSCode a try.
+- **Ans:** VSCode is the preferred option because it integrates seamlessly with Github, WSL, Colab and Docker. Integration of duckdb and other platform also available by using extensions. In addition, it is more light weight compare to Anaconda. Other AI-IDE such as Cursor and Anti-Gravity also uses VScode interface.
 
 5. **I have installed Github Desktop for Mac/Windows, do I still need to install Git?**
 - **Ans:** There’s no extra step required. Once the GitHub software is installed, Git is already included and ready to use.
