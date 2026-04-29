@@ -168,8 +168,6 @@ We will be using DBGate SQL client throughout this course to connect to database
 
 Download and install DbGate Community version [here](https://www.dbgate.io/download-community/).
 
-### Important DBGate version 7.1.8 has internal API issues, please download the last stable version 7.1.3. [here](https://github.com/dbgate/dbgate/releases?page=2)
-
 ![alt text](assets/dbGate.png)
 
 ### Alternative 
