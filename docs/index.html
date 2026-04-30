@@ -1,13 +1,13 @@
-<!-- Chosen Palette: Warm Neutrals with Calm Accents -->
-<!-- Application Structure Plan: A tab-based SPA. A persistent top navigation bar allows users to select "Overview" or one of the 5 course Phases. The "Overview" tab (default) displays the final goal, a donut chart visualizing the class distribution per phase, and an HTML/CSS-based dependency flowchart. Clicking a Phase tab (e.g., "Phase 2") dynamically loads its content, showing an introductory text and a grid of "class cards" detailing each class's title and contribution to the final project. This structure was chosen to transform the linear document into a non-linear, interactive tool, allowing users to easily grasp the big picture (Overview) or drill down into specific sections (Phase tabs) without losing context. -->
-<!-- Visualization & Content Choices: 1. Report Info: Class counts per phase (Ph 1: 2, Ph 2: 5, etc.). Goal: Show course structure at a glance. Viz: Donut Chart. Interaction: Hover tooltip. Justification: Provides an immediate visual summary of course balance. Library: Chart.js (Canvas). 2. Report Info: Mermaid dependency graph. Goal: Replicate the visual flow of the curriculum. Viz: HTML/CSS Flexbox Diagram. Interaction: Static visual within the "Overview" tab. Justification: Recreates the forbidden Mermaid chart's logic using allowed HTML/Tailwind, showing the flow from Storage to Presentation. Library: HTML/Tailwind. 3. Report Info: Phase/Class/Contribution tables. Goal: Present detailed class info. Viz: Tabbed content with styled "cards". Interaction: Click tabs to show/hide sections. Justification: Breaks the long report into manageable, on-demand chunks. Library: Vanilla JS. -->
-<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+<!-- Updated to reflect 10-lesson structure, 4 coaching sessions, and mini-hackathon format -->
+<!-- Tab structure: Overview | Phase 1 | Phase 2 | Phase 3 | Phase 4 | Phase 5 | Mini-Hackathon -->
+<!-- Donut chart updated to show lesson counts per phase (3,3,2,2,1) -->
+<!-- Dependency flow updated: phases + coaching session milestones -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Course Roadmap</title>
+    <title>DSAI Module 1 — Interactive Course Roadmap</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,8 +20,8 @@
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 450px;
-            height: 450px;
+            max-width: 420px;
+            height: 420px;
             margin: 0 auto;
         }
         .nav-button {
@@ -42,10 +42,10 @@
             background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
             border: 1px solid #e5e7eb;
             border-radius: 0.75rem;
-            padding: 1rem;
-            margin-bottom: 0.5rem;
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.4rem;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            font-size: 0.875rem;
+            font-size: 0.82rem;
             font-weight: 500;
             transition: all 0.3s ease;
         }
@@ -53,12 +53,20 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 16px rgba(0,0,0,0.12);
         }
+        .coaching-card {
+            border-radius: 0.75rem;
+            padding: 0.7rem 1rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            border: 2px dashed;
+        }
         .flow-arrow {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             color: #9ca3af;
             font-weight: 700;
             text-align: center;
-            margin: 0.75rem 0;
+            margin: 0.5rem 0;
         }
         .content-tab {
             animation: fadeIn 0.5s ease-in-out;
@@ -79,6 +87,30 @@
             border-radius: 1rem;
             box-shadow: 0 4px 16px rgba(0,0,0,0.08);
         }
+        .coaching-pill {
+            display: inline-block;
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+            border-radius: 9999px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .hackathon-pill {
+            display: inline-block;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            border-radius: 9999px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
 <body class="bg-stone-50 text-stone-800 antialiased">
@@ -86,197 +118,440 @@
     <div class="container mx-auto p-4 md:p-8 max-w-7xl">
 
         <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-700 to-blue-900 bg-clip-text text-transparent mb-6">🗺️ The Road to the "1 Million Row" Dashboard</h1>
-            <p class="text-xl text-stone-700 max-w-3xl mx-auto font-medium mb-6">Your interactive guide to mastering data science</p>
+            <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-700 to-blue-900 bg-clip-text text-transparent mb-6">🗺️ Data Science & AI — Module 1</h1>
+            <p class="text-xl text-stone-700 max-w-3xl mx-auto font-medium mb-6">Your interactive course roadmap</p>
             <blockquote class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-600 text-blue-900 p-6 rounded-r-xl mt-6 max-w-3xl mx-auto text-left shadow-lg">
-                <span class="text-lg font-semibold">"By Class 15, analyze a database with 1+ million records and present a professional dashboard identifying key business insights."</span>
+                <span class="text-lg font-semibold">"By the end of Module 1, you will work in a group to investigate a real dataset, uncover business insights, and present your findings — using every skill built across the 10 lessons."</span>
             </blockquote>
         </header>
 
         <nav class="flex flex-wrap gap-2 justify-center mb-8">
-            <button class="nav-button active px-4 py-2 rounded-lg font-medium bg-white text-blue-700 border border-stone-300 hover:bg-stone-100 transition-colors" data-tab="overview">
-                Overview
-            </button>
-            <button class="nav-button px-4 py-2 rounded-lg font-medium bg-white text-blue-700 border border-stone-300 hover:bg-stone-100 transition-colors" data-tab="phase1">
-                🟢 Phase 1: Foundation
-            </button>
-            <button class="nav-button px-4 py-2 rounded-lg font-medium bg-white text-blue-700 border border-stone-300 hover:bg-stone-100 transition-colors" data-tab="phase2">
-                🔵 Phase 2: Warehouse
-            </button>
-            <button class="nav-button px-4 py-2 rounded-lg font-medium bg-white text-blue-700 border border-stone-300 hover:bg-stone-100 transition-colors" data-tab="phase3">
-                🟠 Phase 3: Engine
-            </button>
-            <button class="nav-button px-4 py-2 rounded-lg font-medium bg-white text-blue-700 border border-stone-300 hover:bg-stone-100 transition-colors" data-tab="phase4">
-                🟣 Phase 4: Detective Work
-            </button>
-            <button class="nav-button px-4 py-2 rounded-lg font-medium bg-white text-blue-700 border border-stone-300 hover:bg-stone-100 transition-colors" data-tab="phase5">
-                🔴 Phase 5: The Story
-            </button>
+            <button class="nav-button active px-4 py-2 rounded-lg font-medium bg-white text-blue-700 border border-stone-300" data-tab="overview">Overview</button>
+            <button class="nav-button px-4 py-2 rounded-lg font-medium bg-white text-blue-700 border border-stone-300" data-tab="phase1">🟢 Phase 1: Foundation</button>
+            <button class="nav-button px-4 py-2 rounded-lg font-medium bg-white text-blue-700 border border-stone-300" data-tab="phase2">🔵 Phase 2: SQL</button>
+            <button class="nav-button px-4 py-2 rounded-lg font-medium bg-white text-blue-700 border border-stone-300" data-tab="phase3">🟠 Phase 3: Python</button>
+            <button class="nav-button px-4 py-2 rounded-lg font-medium bg-white text-blue-700 border border-stone-300" data-tab="phase4">🟣 Phase 4: EDA</button>
+            <button class="nav-button px-4 py-2 rounded-lg font-medium bg-white text-blue-700 border border-stone-300" data-tab="phase5">🔴 Phase 5: Visualisation</button>
+            <button class="nav-button px-4 py-2 rounded-lg font-medium bg-white text-amber-700 border border-stone-300" data-tab="hackathon">🏆 Mini-Hackathon</button>
         </nav>
 
         <main id="content-container">
 
-            <div id="overview" class="content-tab space-y-12">
+            <!-- OVERVIEW TAB -->
+            <div id="overview" class="content-tab space-y-10">
+
                 <section class="section-card p-8">
-                    <h2 class="text-3xl font-bold text-blue-800 mb-6 text-center">Course Structure at a Glance</h2>
-                    <p class="text-stone-700 text-lg mb-8 text-center max-w-2xl mx-auto">
-                        The course is broken into five phases, each building on the last. The "Warehouse" (SQL) phase is the largest, as it provides the core data foundation for everything that follows.
+                    <h2 class="text-3xl font-bold text-blue-800 mb-4 text-center">Course Structure at a Glance</h2>
+                    <p class="text-stone-600 text-base mb-2 text-center max-w-2xl mx-auto">
+                        10 lessons across 5 phases, with 4 coaching sessions woven in between — each coaching session turns what you just learned into hands-on hackathon progress.
                     </p>
+                    <p class="text-stone-500 text-sm mb-8 text-center">The chart shows the number of lessons per phase.</p>
                     <div class="chart-container">
                         <canvas id="phaseChart"></canvas>
                     </div>
                 </section>
 
                 <section class="section-card p-8">
-                    <h2 class="text-3xl font-bold text-blue-800 mb-6 text-center">Learning Dependency Flow</h2>
-                    <p class="text-stone-700 text-lg mb-8 text-center max-w-2xl mx-auto">
-                        This shows how each phase connects. You'll start by building the "Warehouse" (Storage), then learn to "Process" the data, "Analyze" it for insights, and finally "Present" your findings as a dashboard.
+                    <h2 class="text-3xl font-bold text-blue-800 mb-4 text-center">How the Module Flows</h2>
+                    <p class="text-stone-600 text-base mb-8 text-center max-w-2xl mx-auto">
+                        Each phase feeds the next. Coaching sessions (shown in purple) are the bridge where classroom skills become hackathon deliverables.
                     </p>
-                    <div class="flex flex-col md:flex-row md:space-x-4">
-                        
-                        <div class="flex-1 text-center p-2">
-                            <h3 class="font-bold text-lg mb-2 text-blue-700">🔵 Phase 2: Storage</h3>
-                            <div class="flow-card">C3: DB Intro</div>
-                            <div class="flow-arrow">&darr;</div>
-                            <div class="flow-card">C4: DDL</div>
-                            <div class="flow-arrow">&darr;</div>
-                            <div class="flow-card">C5: DML</div>
-                            <div class="flow-arrow">&darr;</div>
-                            <div class="flow-card">C7: Adv SQL</div>
+
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-center gap-2 md:gap-0">
+
+                        <!-- Phase 1 -->
+                        <div class="flex-1 text-center px-2 min-w-0">
+                            <h3 class="font-bold text-sm mb-2 text-green-700">🟢 Foundation</h3>
+                            <div class="flow-card">1.0 Onboarding</div>
+                            <div class="flow-card">1.1 Data Science Intro</div>
+                            <div class="flow-card">1.2 Data Modelling</div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="coaching-card border-indigo-400 bg-indigo-50 text-indigo-800">🛠️ Coaching 1<br><span class="font-normal text-xs">Git · NotebookLM · Prompting</span></div>
                         </div>
 
-                        <div class="flex items-center justify-center text-2xl font-bold text-stone-400 p-4">
-                            <span class="hidden md:block">&rarr;</span>
-                            <span class="block md:hidden">&darr;</span>
+                        <div class="flex items-center justify-center text-xl font-bold text-stone-300 px-1 mt-8 hidden md:flex">→</div>
+                        <div class="flex items-center justify-center text-xl font-bold text-stone-300 my-1 md:hidden">↓</div>
+
+                        <!-- Phase 2 -->
+                        <div class="flex-1 text-center px-2 min-w-0">
+                            <h3 class="font-bold text-sm mb-2 text-blue-700">🔵 SQL</h3>
+                            <div class="flow-card">1.3 SQL DDL</div>
+                            <div class="flow-card">1.4 SQL DML</div>
+                            <div class="flow-card">1.5 SQL Advanced</div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="coaching-card border-indigo-400 bg-indigo-50 text-indigo-800">🛠️ Coaching 2<br><span class="font-normal text-xs">Hackathon Kickoff · SQL Analysis</span></div>
                         </div>
 
-                        <div class="flex-1 text-center p-2">
-                            <h3 class="font-bold text-lg mb-2 text-orange-600">🟠 Phase 3: Processing</h3>
-                            <div class="flow-card">C8: Numpy</div>
-                            <div class="flow-arrow">&darr;</div>
-                            <div class="flow-card">C10: Pandas</div>
+                        <div class="flex items-center justify-center text-xl font-bold text-stone-300 px-1 mt-8 hidden md:flex">→</div>
+                        <div class="flex items-center justify-center text-xl font-bold text-stone-300 my-1 md:hidden">↓</div>
+
+                        <!-- Phase 3 -->
+                        <div class="flex-1 text-center px-2 min-w-0">
+                            <h3 class="font-bold text-sm mb-2 text-orange-600">🟠 Python</h3>
+                            <div class="flow-card">1.6 NumPy</div>
+                            <div class="flow-card">1.7 Pandas</div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="coaching-card border-indigo-400 bg-indigo-50 text-indigo-800">🛠️ Coaching 3<br><span class="font-normal text-xs">Python Analysis</span></div>
                         </div>
 
-                        <div class="flex items-center justify-center text-2xl font-bold text-stone-400 p-4">
-                            <span class="hidden md:block">&rarr;</span>
-                            <span class="block md:hidden">&darr;</span>
+                        <div class="flex items-center justify-center text-xl font-bold text-stone-300 px-1 mt-8 hidden md:flex">→</div>
+                        <div class="flex items-center justify-center text-xl font-bold text-stone-300 my-1 md:hidden">↓</div>
+
+                        <!-- Phase 4 + 5 -->
+                        <div class="flex-1 text-center px-2 min-w-0">
+                            <h3 class="font-bold text-sm mb-2 text-purple-700">🟣 EDA</h3>
+                            <div class="flow-card">1.8 EDA Basic</div>
+                            <div class="flow-card">1.9 EDA Advanced</div>
+                            <h3 class="font-bold text-sm mt-3 mb-2 text-red-600">🔴 Storytelling</h3>
+                            <div class="flow-card">1.10 Data Viz</div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="coaching-card border-amber-400 bg-amber-50 text-amber-800">🏁 Coaching 4<br><span class="font-normal text-xs">EDA Wrap-Up · Presentations</span></div>
                         </div>
 
-                        <div class="flex-1 text-center p-2">
-                            <h3 class="font-bold text-lg mb-2 text-purple-600">🟣 Phase 4: Analysis</h3>
-                            <div class="flow-card">C11: EDA Basic</div>
-                            <div class="flow-arrow">&darr;</div>
-                            <div class="flow-card">C13: EDA Adv</div>
-                        </div>
-                        
-                        <div class="flex items-center justify-center text-2xl font-bold text-stone-400 p-4">
-                            <span class="hidden md:block">&rarr;</span>
-                            <span class="block md:hidden">&darr;</span>
-                        </div>
+                        <div class="flex items-center justify-center text-xl font-bold text-stone-300 px-1 mt-8 hidden md:flex">→</div>
+                        <div class="flex items-center justify-center text-xl font-bold text-stone-300 my-1 md:hidden">↓</div>
 
-                        <div class="flex-1 text-center p-2">
-                            <h3 class="font-bold text-lg mb-2 text-red-600">🔴 Phase 5: Presentation</h3>
-                            <div class="flow-card">C14: Data Viz</div>
-                            <div class="flow-arrow">&darr;</div>
-                            <div class="flow-card">🏆 C15: Dashboard</div>
+                        <!-- Goal -->
+                        <div class="flex-1 text-center px-2 min-w-0 flex items-center justify-center">
+                            <div class="bg-gradient-to-br from-amber-400 to-amber-600 text-white rounded-xl p-4 shadow-lg font-bold text-sm">
+                                🏆<br>Mini-Hackathon<br>Final Presentation
+                            </div>
                         </div>
 
                     </div>
                 </section>
+
+                <section class="section-card p-8">
+                    <h2 class="text-2xl font-bold text-blue-800 mb-6 text-center">The 4 Coaching Sessions</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="rounded-xl p-5 border-2 border-indigo-200 bg-indigo-50">
+                            <div class="coaching-pill">Coaching 1</div>
+                            <h3 class="font-bold text-indigo-900 mb-1">Tools & AI Companion</h3>
+                            <p class="text-indigo-700 text-sm">After Lessons 1.0–1.2</p>
+                            <ul class="mt-2 text-sm text-indigo-800 space-y-1">
+                                <li>• Git & GitHub</li>
+                                <li>• Google NotebookLM</li>
+                                <li>• Effective Prompting</li>
+                            </ul>
+                            <p class="mt-2 text-xs text-indigo-500 italic">No hackathon deliverable — tools prep only</p>
+                        </div>
+                        <div class="rounded-xl p-5 border-2 border-indigo-200 bg-indigo-50">
+                            <div class="coaching-pill">Coaching 2</div>
+                            <h3 class="font-bold text-indigo-900 mb-1">Hackathon Kickoff & SQL</h3>
+                            <p class="text-indigo-700 text-sm">After Lessons 1.3–1.5</p>
+                            <ul class="mt-2 text-sm text-indigo-800 space-y-1">
+                                <li>• Form your group</li>
+                                <li>• Define business questions</li>
+                                <li>• SQL exploratory analysis</li>
+                            </ul>
+                            <p class="mt-2 text-xs text-indigo-500 italic">Deliverable: .sql file + findings summary</p>
+                        </div>
+                        <div class="rounded-xl p-5 border-2 border-indigo-200 bg-indigo-50">
+                            <div class="coaching-pill">Coaching 3</div>
+                            <h3 class="font-bold text-indigo-900 mb-1">Python Analysis</h3>
+                            <p class="text-indigo-700 text-sm">After Lessons 1.6–1.7</p>
+                            <ul class="mt-2 text-sm text-indigo-800 space-y-1">
+                                <li>• Load data with Pandas</li>
+                                <li>• Filter & explore</li>
+                                <li>• NumPy calculations</li>
+                            </ul>
+                            <p class="mt-2 text-xs text-indigo-500 italic">Deliverable: Jupyter exploration notebook</p>
+                        </div>
+                        <div class="rounded-xl p-5 border-2 border-amber-300 bg-amber-50">
+                            <div class="hackathon-pill">Coaching 4</div>
+                            <h3 class="font-bold text-amber-900 mb-1">EDA Wrap-Up & Final Presentations</h3>
+                            <p class="text-amber-700 text-sm">After Lessons 1.8–1.10</p>
+                            <ul class="mt-2 text-sm text-amber-800 space-y-1">
+                                <li>• Finalise EDA & charts</li>
+                                <li>• 10-min group presentation</li>
+                                <li>• Q&A from cohort & coaches</li>
+                            </ul>
+                            <p class="mt-2 text-xs text-amber-600 italic">Deliverable: notebook + slides</p>
+                        </div>
+                    </div>
+                </section>
             </div>
 
+            <!-- PHASE 1 TAB -->
             <div id="phase1" class="content-tab hidden section-card p-8">
-                <h2 class="text-3xl font-bold text-green-700 mb-4">🟢 Phase 1: The Foundation</h2>
-                <p class="text-stone-700 text-lg mb-8">Before we touch the data, we need the tools and the strategy. This phase sets up your environment and the "Data Lifecycle" framework you'll use for the final project.</p>
-                <div class="grid md:grid-cols-2 gap-6">
+                <h2 class="text-3xl font-bold text-green-700 mb-2">🟢 Phase 1: The Foundation</h2>
+                <p class="text-stone-500 text-sm mb-4">Lessons 1.0 – 1.2</p>
+                <p class="text-stone-700 text-lg mb-8">Build the mental model for what data science is, why databases exist, and how data is structured — before writing a single line of SQL or Python.</p>
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
                     <div class="card-hover border border-stone-200 rounded-xl p-6 bg-gradient-to-br from-white to-green-50">
-                        <h3 class="font-bold text-xl text-stone-900 mb-3">Class 01: Onboarding</h3>
-                        <p class="text-stone-700 leading-relaxed">🎯 <strong>Contribution:</strong> Sets up your <strong>NotebookLM & Discord</strong> to kick start your learning journey.</p>
+                        <p class="text-xs font-semibold text-green-600 uppercase tracking-wide mb-1">Lesson 1.0</p>
+                        <h3 class="font-bold text-xl text-stone-900 mb-3">Welcome & Onboarding</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">Set up your tools, join Discord, meet the cohort.</p>
+                        <p class="mt-3 text-stone-700 text-sm">🏆 <strong>Hackathon:</strong> Understand the module structure and what the hackathon will ask of you.</p>
                     </div>
                     <div class="card-hover border border-stone-200 rounded-xl p-6 bg-gradient-to-br from-white to-green-50">
-                        <h3 class="font-bold text-xl text-stone-900 mb-3">Class 02: Intro to Data Science</h3>
-                        <p class="text-stone-700 leading-relaxed">🎯 <strong>Contribution:</strong> Teaches you the <strong>Data Lifecycle</strong> so you know the steps to follow for the project (Collection → Cleaning → Viz).</p>
+                        <p class="text-xs font-semibold text-green-600 uppercase tracking-wide mb-1">Lesson 1.1</p>
+                        <h3 class="font-bold text-xl text-stone-900 mb-3">Intro to Data Science</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">Analytics → Data Science → AI hierarchy; data pipelines (Collection → Cleaning → Analysis → Viz); data ethics & bias.</p>
+                        <p class="mt-3 text-stone-700 text-sm">🏆 <strong>Hackathon:</strong> Frame the kinds of questions your dataset can answer and identify the right analytical approach.</p>
                     </div>
+                    <div class="card-hover border border-stone-200 rounded-xl p-6 bg-gradient-to-br from-white to-green-50">
+                        <p class="text-xs font-semibold text-green-600 uppercase tracking-wide mb-1">Lesson 1.2</p>
+                        <h3 class="font-bold text-xl text-stone-900 mb-3">Data Modeling & Schema Design</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">Relational vs. NoSQL vs. Vector databases; ERDs; Primary & Foreign Keys; Normalization (1NF–3NF).</p>
+                        <p class="mt-3 text-stone-700 text-sm">🏆 <strong>Hackathon:</strong> Read and interpret the dataset's schema — understand how tables connect before writing a single query.</p>
+                    </div>
+                </div>
+                <div class="rounded-xl border-2 border-dashed border-indigo-300 bg-indigo-50 p-6">
+                    <div class="coaching-pill">Coaching Session 1</div>
+                    <h3 class="font-bold text-indigo-900 text-lg mb-3">Tools & AI Companion</h3>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-white rounded-lg p-4 border border-indigo-100">
+                            <p class="font-semibold text-indigo-800 mb-1">🗂️ Git & GitHub</p>
+                            <p class="text-indigo-700 text-sm">Create a repo, commit your work, push to GitHub. Every hackathon deliverable will be version-controlled from this point on.</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 border border-indigo-100">
+                            <p class="font-semibold text-indigo-800 mb-1">📚 Google NotebookLM</p>
+                            <p class="text-indigo-700 text-sm">Upload course materials and use NotebookLM to summarise content, quiz yourself, and generate study notes.</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 border border-indigo-100">
+                            <p class="font-semibold text-indigo-800 mb-1">💬 Effective Prompting</p>
+                            <p class="text-indigo-700 text-sm">Write clear, specific prompts to debug code, explain concepts, and brainstorm analysis angles with AI tools.</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-indigo-500 text-sm italic">No hackathon deliverable this session — focus entirely on getting comfortable with the tools.</p>
                 </div>
             </div>
 
+            <!-- PHASE 2 TAB -->
             <div id="phase2" class="content-tab hidden section-card p-8">
-                <h2 class="text-3xl font-bold text-blue-700 mb-4">🔵 Phase 2: The Warehouse (Getting the Data)</h2>
-                <p class="text-stone-700 text-lg mb-8">You can't analyze 1 million rows in Excel. You need a database. This phase builds the "Backend" of your project, teaching you how to create, manage, and query data with SQL.</p>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <h2 class="text-3xl font-bold text-blue-700 mb-2">🔵 Phase 2: SQL — Querying the Warehouse</h2>
+                <p class="text-stone-500 text-sm mb-4">Lessons 1.3 – 1.5</p>
+                <p class="text-stone-700 text-lg mb-8">You cannot analyse a large dataset in Excel. SQL lets you ask precise questions of millions of rows in seconds — and connects directly to the hackathon dataset your group will investigate.</p>
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
                     <div class="card-hover border border-stone-200 rounded-xl p-6 bg-gradient-to-br from-white to-blue-50">
-                        <h3 class="font-bold text-xl text-stone-900 mb-3">Class 03: Intro to Database</h3>
-                        <p class="text-stone-700 leading-relaxed">🎯 <strong>Contribution:</strong> Helps you understand the <strong>schema</strong> (map) of the massive dataset you will be given.</p>
+                        <p class="text-xs font-semibold text-blue-600 uppercase tracking-wide mb-1">Lesson 1.3</p>
+                        <h3 class="font-bold text-xl text-stone-900 mb-3">SQL Basic — DDL</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">CREATE TABLE, data types, constraints (PK/FK/NOT NULL/CHECK), COPY for bulk import, indexes, views.</p>
+                        <p class="mt-3 text-stone-700 text-sm">🏆 <strong>Hackathon:</strong> Create the database tables and load the hackathon dataset.</p>
                     </div>
                     <div class="card-hover border border-stone-200 rounded-xl p-6 bg-gradient-to-br from-white to-blue-50">
-                        <h3 class="font-bold text-xl text-stone-900 mb-3">Class 04: SQL Basic (DDL)</h3>
-                        <p class="text-stone-700 leading-relaxed">🎯 <strong>Contribution:</strong> Teaches you how to <strong>create the tables</strong> to store the 1 million rows.</p>
+                        <p class="text-xs font-semibold text-blue-600 uppercase tracking-wide mb-1">Lesson 1.4</p>
+                        <h3 class="font-bold text-xl text-stone-900 mb-3">SQL Basic — DML</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">SELECT, WHERE, ORDER BY, aggregates (COUNT/SUM/AVG/MIN/MAX), GROUP BY, HAVING, CASE, CAST.</p>
+                        <p class="mt-3 text-stone-700 text-sm">🏆 <strong>Hackathon:</strong> Write the first exploratory queries — "Which category has the highest average value? What is the distribution by region?"</p>
                     </div>
                     <div class="card-hover border border-stone-200 rounded-xl p-6 bg-gradient-to-br from-white to-blue-50">
-                        <h3 class="font-bold text-xl text-stone-900 mb-3">Class 05: SQL Basic (DML)</h3>
-                        <p class="text-stone-700 leading-relaxed">🎯 <strong>Contribution:</strong> Teaches you how to <strong>fix errors</strong> in specific rows of the raw data.</p>
+                        <p class="text-xs font-semibold text-blue-600 uppercase tracking-wide mb-1">Lesson 1.5</p>
+                        <h3 class="font-bold text-xl text-stone-900 mb-3">SQL Advanced</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">JOINs (Inner/Left/Right/Full), UNION, window functions (running totals, RANK), Common Table Expressions (CTEs).</p>
+                        <p class="mt-3 text-stone-700 text-sm">🏆 <strong>Hackathon:</strong> Combine multiple tables, rank records, and build the complex queries your analysis needs.</p>
                     </div>
-                    <div class="card-hover border border-stone-200 rounded-xl p-6 bg-gradient-to-br from-white to-blue-50">
-                        <h3 class="font-bold text-xl text-stone-900 mb-3">Class 06: Coaching 1: GitHub & VS Code</h3>
-                        <p class="text-stone-700 leading-relaxed">🎯 <strong>Contribution:</strong> Ensures you can <strong>save your versions</strong> so you don't lose your work if your computer crashes.</p>
+                </div>
+                <div class="rounded-xl border-2 border-dashed border-indigo-300 bg-indigo-50 p-6">
+                    <div class="coaching-pill">Coaching Session 2</div>
+                    <h3 class="font-bold text-indigo-900 text-lg mb-3">Hackathon Kickoff & SQL Analysis</h3>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-white rounded-lg p-4 border border-indigo-100">
+                            <p class="font-semibold text-indigo-800 mb-1">👥 Form Groups</p>
+                            <p class="text-indigo-700 text-sm">Teams of 3–4 learners. Choose a dataset domain together (e.g. retail, healthcare, transport, finance).</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 border border-indigo-100">
+                            <p class="font-semibold text-indigo-800 mb-1">🚀 Hackathon Kickoff</p>
+                            <p class="text-indigo-700 text-sm">Each group defines 3–5 business questions to answer with the dataset. Questions are reviewed with the coach before analysis begins.</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 border border-indigo-100">
+                            <p class="font-semibold text-indigo-800 mb-1">🔍 SQL Analysis Sprint</p>
+                            <p class="text-indigo-700 text-sm">Use SELECT, GROUP BY, JOINs, and at least one window function to start answering your questions.</p>
+                        </div>
                     </div>
-                    <div class="card-hover border border-stone-200 rounded-xl p-6 bg-gradient-to-br from-white to-blue-50">
-                        <h3 class="font-bold text-xl text-stone-900 mb-3">Class 07: SQL Advanced</h3>
-                        <p class="text-stone-700 leading-relaxed">🎯 <strong>Contribution:</strong> Crucial! You will use <strong>JOINS</strong> to connect the "Customer" table to the "Transactions" table to find spending habits.</p>
-                    </div>
+                    <p class="mt-4 text-indigo-700 text-sm font-medium">📤 Deliverable: A <code class="bg-indigo-100 px-1 rounded">.sql</code> file with your group's exploratory queries and a brief written summary of what you found. Share in #peer-reviews on Discord.</p>
                 </div>
             </div>
 
+            <!-- PHASE 3 TAB -->
             <div id="phase3" class="content-tab hidden section-card p-8">
-                <h2 class="text-3xl font-bold text-orange-600 mb-4">🟠 Phase 3: The Engine (Crunching the Numbers)</h2>
-                <p class="text-stone-700 text-lg mb-8">SQL gets the data, but Python does the heavy mathematical lifting. This phase introduces the core Python libraries for high-speed numerical analysis and data manipulation.</p>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <h2 class="text-3xl font-bold text-orange-600 mb-2">🟠 Phase 3: Python — The Analytical Engine</h2>
+                <p class="text-stone-500 text-sm mb-4">Lessons 1.6 – 1.7</p>
+                <p class="text-stone-700 text-lg mb-8">SQL retrieves the data. Python transforms, calculates, and models it at scale. This phase introduces the two core Python libraries that underpin every data science workflow.</p>
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
                     <div class="card-hover border border-stone-200 rounded-xl p-6 bg-gradient-to-br from-white to-orange-50">
-                        <h3 class="font-bold text-xl text-stone-900 mb-3">Class 08: Intro to Numpy</h3>
-                        <p class="text-stone-700 leading-relaxed">🎯 <strong>Contribution:</strong> Teaches you <strong>vectorization</strong>—the only way to calculate stats on 1 million rows without crashing your browser.</p>
+                        <p class="text-xs font-semibold text-orange-600 uppercase tracking-wide mb-1">Lesson 1.6</p>
+                        <h3 class="font-bold text-xl text-stone-900 mb-3">Intro to NumPy</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">ndarray creation, broadcasting, indexing & slicing, vectorised operations, basic linear algebra. Why NumPy is 100x faster than Python loops on large datasets.</p>
+                        <p class="mt-3 text-stone-700 text-sm">🏆 <strong>Hackathon:</strong> Perform fast numerical calculations on dataset columns — percentage changes, normalisation, statistical aggregations.</p>
                     </div>
                     <div class="card-hover border border-stone-200 rounded-xl p-6 bg-gradient-to-br from-white to-orange-50">
-                        <h3 class="font-bold text-xl text-stone-900 mb-3">Class 09: Coaching 2</h3>
-                        <p class="text-stone-700 leading-relaxed">🎯 <strong>Contribution:</strong> Bridges the gap between "Querying" (SQL) and "Programming" (Python).</p>
+                        <p class="text-xs font-semibold text-orange-600 uppercase tracking-wide mb-1">Lesson 1.7</p>
+                        <h3 class="font-bold text-xl text-stone-900 mb-3">Intro to Pandas</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">DataFrames & Series, <code class="bg-orange-100 px-1 rounded text-xs">.loc</code> / <code class="bg-orange-100 px-1 rounded text-xs">.iloc</code>, Boolean filtering, <code class="bg-orange-100 px-1 rounded text-xs">.apply()</code>, sort & rank.</p>
+                        <p class="mt-3 text-stone-700 text-sm">🏆 <strong>Hackathon:</strong> Load the dataset into Python, filter it, and begin exploring it programmatically.</p>
                     </div>
-                    <div class="card-hover border border-stone-200 rounded-xl p-6 bg-gradient-to-br from-white to-orange-50">
-                        <h3 class="font-bold text-xl text-stone-900 mb-3">Class 10: Intro to Pandas</h3>
-                        <p class="text-stone-700 leading-relaxed">🎯 <strong>Contribution:</strong> The <strong>core tool</strong>. You will use DataFrames to hold the data in memory and perform complex filtering (e.g., "Show me top 10% of users").</p>
+                </div>
+                <div class="rounded-xl border-2 border-dashed border-indigo-300 bg-indigo-50 p-6">
+                    <div class="coaching-pill">Coaching Session 3</div>
+                    <h3 class="font-bold text-indigo-900 text-lg mb-3">Python Analysis</h3>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-white rounded-lg p-4 border border-indigo-100">
+                            <p class="font-semibold text-indigo-800 mb-1">📂 Load & Inspect</p>
+                            <p class="text-indigo-700 text-sm">Load your dataset into a Pandas DataFrame. Run <code class="bg-indigo-50 text-xs px-1 rounded">.info()</code>, <code class="bg-indigo-50 text-xs px-1 rounded">.describe()</code>, <code class="bg-indigo-50 text-xs px-1 rounded">.value_counts()</code> on key columns.</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 border border-indigo-100">
+                            <p class="font-semibold text-indigo-800 mb-1">🔎 Filter & Slice</p>
+                            <p class="text-indigo-700 text-sm">Reproduce your SQL findings using Pandas Boolean filters and <code class="bg-indigo-50 text-xs px-1 rounded">.groupby()</code>.</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 border border-indigo-100">
+                            <p class="font-semibold text-indigo-800 mb-1">🔢 NumPy Calculations</p>
+                            <p class="text-indigo-700 text-sm">Use NumPy for statistical or numerical calculations — normalising values, calculating percentage changes.</p>
+                        </div>
                     </div>
+                    <p class="mt-4 text-indigo-700 text-sm font-medium">📤 Deliverable: A Jupyter notebook with structured sections, readable code, and brief written interpretations of each output. Share your notebook link in #peer-reviews on Discord.</p>
                 </div>
             </div>
 
+            <!-- PHASE 4 TAB -->
             <div id="phase4" class="content-tab hidden section-card p-8">
-                <h2 class="text-3xl font-bold text-purple-600 mb-4">🟣 Phase 4: The Detective Work (Finding Insights)</h2>
-                <p class="text-stone-700 text-lg mb-8">Now that the data is loaded, we need to find the "gold" hidden in the noise. This is the Exploratory Data Analysis (EDA) phase, where you clean messy data and engineer new features.</p>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <h2 class="text-3xl font-bold text-purple-700 mb-2">🟣 Phase 4: EDA — Finding the Insights</h2>
+                <p class="text-stone-500 text-sm mb-4">Lessons 1.8 – 1.9</p>
+                <p class="text-stone-700 text-lg mb-8">Real data is messy. This phase turns raw data into trustworthy, analysis-ready insights — cleaning problems before they poison your conclusions, then aggregating to surface the patterns that matter.</p>
+                <div class="grid md:grid-cols-2 gap-6">
                     <div class="card-hover border border-stone-200 rounded-xl p-6 bg-gradient-to-br from-white to-purple-50">
-                        <h3 class="font-bold text-xl text-stone-900 mb-3">Class 11: EDA Basic</h3>
-                        <p class="text-stone-700 leading-relaxed">🎯 <strong>Contribution:</strong> <strong>Cleaning.</strong> Real data is dirty. You will use this to remove nulls and duplicates from the 1 million rows.</p>
+                        <p class="text-xs font-semibold text-purple-600 uppercase tracking-wide mb-1">Lesson 1.8</p>
+                        <h3 class="font-bold text-xl text-stone-900 mb-3">EDA Basic</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-2">The data health check: <code class="bg-purple-100 px-1 rounded text-xs">.info()</code>, <code class="bg-purple-100 px-1 rounded text-xs">.describe()</code>, <code class="bg-purple-100 px-1 rounded text-xs">.value_counts()</code>.</p>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-2">Handling missing values (<code class="bg-purple-100 px-1 rounded text-xs">fillna</code> / <code class="bg-purple-100 px-1 rounded text-xs">dropna</code>), duplicates, outlier detection (IQR, z-score).</p>
+                        <p class="text-stone-600 text-sm leading-relaxed">Type conversion, string cleaning, categorical encoding, file I/O (CSV, JSON, Excel).</p>
+                        <p class="mt-3 text-stone-700 text-sm">🏆 <strong>Hackathon:</strong> Clean your dataset — fix types, remove nulls and duplicates — so every downstream result can be trusted.</p>
                     </div>
                     <div class="card-hover border border-stone-200 rounded-xl p-6 bg-gradient-to-br from-white to-purple-50">
-                        <h3 class="font-bold text-xl text-stone-900 mb-3">Class 12: Coaching 3</h3>
-                        <p class="text-stone-700 leading-relaxed">🎯 <strong>Contribution:</strong> A practice run to ensure your cleaning scripts are robust enough for the final dataset.</p>
-                    </div>
-                    <div class="card-hover border border-stone-200 rounded-xl p-6 bg-gradient-to-br from-white to-purple-50">
-                        <h3 class="font-bold text-xl text-stone-900 mb-3">Class 13: EDA Advanced</h3>
-                        <p class="text-stone-700 leading-relaxed">🎯 <strong>Contribution:</strong> <strong>Feature Engineering.</strong> You will create <em>new</em> metrics (e.g., converting "Date of Birth" into "Age Group") to make your dashboard more useful.</p>
+                        <p class="text-xs font-semibold text-purple-600 uppercase tracking-wide mb-1">Lesson 1.9</p>
+                        <h3 class="font-bold text-xl text-stone-900 mb-3">EDA Advanced</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-2">Datetime parsing, DatetimeIndex, resampling (<code class="bg-purple-100 px-1 rounded text-xs">.resample()</code>), rolling windows.</p>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-2">SQL-style merges with <code class="bg-purple-100 px-1 rounded text-xs">pd.merge()</code>; wide ↔ long reshaping (<code class="bg-purple-100 px-1 rounded text-xs">melt</code> / <code class="bg-purple-100 px-1 rounded text-xs">pivot</code>).</p>
+                        <p class="text-stone-600 text-sm leading-relaxed">GroupBy (Split-Apply-Combine), <code class="bg-purple-100 px-1 rounded text-xs">pivot_table()</code>, <code class="bg-purple-100 px-1 rounded text-xs">crosstab()</code>.</p>
+                        <p class="mt-3 text-stone-700 text-sm">🏆 <strong>Hackathon:</strong> Aggregate by time period, merge supporting tables, and generate the summary statistics your presentation will be built on.</p>
                     </div>
                 </div>
             </div>
 
+            <!-- PHASE 5 TAB -->
             <div id="phase5" class="content-tab hidden section-card p-8">
-                <h2 class="text-3xl font-bold text-red-600 mb-4">🔴 Phase 5: The Story (The Dashboard)</h2>
-                <p class="text-stone-700 text-lg mb-8">Analysis is useless if no one understands it. This final phase is about "data storytelling." You will learn to create clear visualizations and combine them into a single dashboard to present your findings.</p>
-                <div class="grid md:grid-cols-2 gap-6">
+                <h2 class="text-3xl font-bold text-red-600 mb-2">🔴 Phase 5: Visualisation & Storytelling</h2>
+                <p class="text-stone-500 text-sm mb-4">Lesson 1.10</p>
+                <p class="text-stone-700 text-lg mb-8">Analysis is only as valuable as its communication. This phase teaches you to turn numbers into decisions — by choosing the right chart, applying design principles, and framing your findings as a three-act story.</p>
+                <div class="grid md:grid-cols-1 gap-6 mb-8">
                     <div class="card-hover border border-stone-200 rounded-xl p-6 bg-gradient-to-br from-white to-red-50">
-                        <h3 class="font-bold text-xl text-stone-900 mb-3">Class 14: Data Visualization</h3>
-                        <p class="text-stone-700 leading-relaxed">🎯 <strong>Contribution:</strong> Generates the <strong>Charts & Graphs</strong> (Bar, Line, Scatter) that go onto your dashboard.</p>
+                        <p class="text-xs font-semibold text-red-600 uppercase tracking-wide mb-1">Lesson 1.10</p>
+                        <h3 class="font-bold text-xl text-stone-900 mb-4">Data Visualisation & Storytelling</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div>
+                                <p class="font-semibold text-stone-800 text-sm mb-1">👁️ Perception</p>
+                                <p class="text-stone-600 text-sm">Pre-attentive processing; cognitive load; how to make insights jump out within 500ms.</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-stone-800 text-sm mb-1">🎨 Design</p>
+                                <p class="text-stone-600 text-sm">Chart selection rules; honest visualisation (bar charts start at 0); Matplotlib Figure/Axes/Plot; Seaborn statistical graphics.</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-stone-800 text-sm mb-1">📖 Storytelling</p>
+                                <p class="text-stone-600 text-sm">Three-act structure (Context → Insight → Action); audience-first communication; executive vs. technical framing.</p>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-stone-700 text-sm">🏆 <strong>Hackathon:</strong> Build the charts that support your group's narrative and frame them in a clear three-act story for the final presentation.</p>
                     </div>
-                    <div class="card-hover border border-stone-200 rounded-xl p-6 bg-gradient-to-br from-white to-red-50">
-                        <h3 class="font-bold text-xl text-stone-900 mb-3">Class 15: Assignment Project Presentation</h3>
-                        <p class="text-stone-700 leading-relaxed">🎯 <strong>Contribution:</strong> You combine everything into a single notebook and <strong>present your findings</strong> to the class.</p>
+                </div>
+                <div class="rounded-xl border-2 border-dashed border-amber-300 bg-amber-50 p-6">
+                    <div class="hackathon-pill">Coaching Session 4 — Final</div>
+                    <h3 class="font-bold text-amber-900 text-lg mb-3">EDA Wrap-Up & Hackathon Presentations</h3>
+                    <div class="grid md:grid-cols-2 gap-4 mb-4">
+                        <div class="bg-white rounded-lg p-4 border border-amber-200">
+                            <p class="font-semibold text-amber-800 mb-1">🔬 EDA Wrap-Up (first half)</p>
+                            <p class="text-amber-700 text-sm">Finalise your cleaning, pivot tables, and visualisations. Coaches circulate to help groups that are stuck.</p>
+                        </div>
+                        <div class="bg-white rounded-lg p-4 border border-amber-200">
+                            <p class="font-semibold text-amber-800 mb-1">🎤 Group Presentations (second half)</p>
+                            <p class="text-amber-700 text-sm">Each group presents for <strong>10 minutes including Q&A</strong> — roughly 7 minutes to present, 3 minutes for questions from the cohort and coaches.</p>
+                        </div>
                     </div>
+                    <div class="bg-white rounded-lg p-4 border border-amber-200">
+                        <p class="font-semibold text-amber-800 mb-2">📋 Presentation must include:</p>
+                        <ul class="text-amber-700 text-sm space-y-1">
+                            <li>✓ The business questions your group chose to investigate</li>
+                            <li>✓ A summary of the dataset and any data quality issues found</li>
+                            <li>✓ At least 3 visualisations with clear titles and axis labels</li>
+                            <li>✓ 3 or more data-backed insights stated in plain language</li>
+                            <li>✓ One recommendation a non-technical decision-maker could act on</li>
+                        </ul>
+                    </div>
+                    <p class="mt-3 text-amber-600 text-sm italic">📤 Upload your final notebook and any slides to #peer-reviews on Discord before the session starts.</p>
+                </div>
+            </div>
+
+            <!-- MINI-HACKATHON TAB -->
+            <div id="hackathon" class="content-tab hidden section-card p-8">
+                <h2 class="text-3xl font-bold text-amber-600 mb-2">🏆 Mini-Hackathon</h2>
+                <p class="text-stone-500 text-sm mb-4">A progressive group project woven through the entire module</p>
+                <p class="text-stone-700 text-lg mb-8">The Mini-Hackathon is <strong>not a single event</strong>. It builds across all 4 coaching sessions — so by the time you present, your notebook is already 80% done and there is no last-minute scramble.</p>
+
+                <div class="grid md:grid-cols-4 gap-4 mb-10">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-indigo-100 text-indigo-700 rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-3">1</div>
+                        <h3 class="font-bold text-stone-800 mb-1">Tools Ready</h3>
+                        <p class="text-stone-500 text-xs mb-2">Coaching 1 · After 1.0–1.2</p>
+                        <p class="text-stone-600 text-sm">Set up Git, NotebookLM, and AI prompting skills. No deliverable — pure preparation.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-indigo-100 text-indigo-700 rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-3">2</div>
+                        <h3 class="font-bold text-stone-800 mb-1">SQL Kickoff</h3>
+                        <p class="text-stone-500 text-xs mb-2">Coaching 2 · After 1.3–1.5</p>
+                        <p class="text-stone-600 text-sm">Form groups, define business questions, run SQL exploratory analysis. Deliver a <code class="bg-stone-100 px-1 rounded text-xs">.sql</code> file.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-indigo-100 text-indigo-700 rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-3">3</div>
+                        <h3 class="font-bold text-stone-800 mb-1">Python Analysis</h3>
+                        <p class="text-stone-500 text-xs mb-2">Coaching 3 · After 1.6–1.7</p>
+                        <p class="text-stone-600 text-sm">Load data into Python, filter and explore with NumPy & Pandas. Deliver a Jupyter notebook.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-3">4</div>
+                        <h3 class="font-bold text-stone-800 mb-1">Present Findings</h3>
+                        <p class="text-stone-500 text-xs mb-2">Coaching 4 · After 1.8–1.10</p>
+                        <p class="text-stone-600 text-sm">Finalise EDA & visualisations, then present for 10 minutes (including Q&A) to the cohort.</p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-xl p-6 mb-8">
+                    <h3 class="font-bold text-amber-900 text-lg mb-4">📊 Presentations are evaluated on four dimensions</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="flex gap-3">
+                            <span class="text-2xl">🎯</span>
+                            <div>
+                                <p class="font-semibold text-stone-800">Relevance</p>
+                                <p class="text-stone-600 text-sm">Do your business questions matter? Would a real decision-maker care about the answer?</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-2xl">🔬</span>
+                            <div>
+                                <p class="font-semibold text-stone-800">Rigour</p>
+                                <p class="text-stone-600 text-sm">Is the data clean? Can the numbers be trusted? Were data quality issues handled correctly?</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-2xl">💡</span>
+                            <div>
+                                <p class="font-semibold text-stone-800">Clarity</p>
+                                <p class="text-stone-600 text-sm">Would a non-technical audience understand your insights without reading the code?</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-2xl">📖</span>
+                            <div>
+                                <p class="font-semibold text-stone-800">Storytelling</p>
+                                <p class="text-stone-600 text-sm">Do the visualisations support a clear narrative — context, insight, and recommendation?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-5">
+                    <p class="font-semibold text-blue-800 mb-2">💬 Using Discord throughout</p>
+                    <p class="text-blue-700 text-sm">Post your questions in <strong>#questions</strong>. Share your work-in-progress and get feedback from fellow learners in <strong>#peer-reviews</strong>. Each coaching session deliverable is submitted there.</p>
                 </div>
             </div>
 
@@ -285,49 +560,47 @@
 
     <script>
         window.addEventListener('DOMContentLoaded', () => {
-            
+
             const phaseData = {
                 labels: [
-                    '🟢 Phase 1: Foundation',
-                    '🔵 Phase 2: Warehouse',
-                    '🟠 Phase 3: Engine',
-                    '🟣 Phase 4: Detective Work',
-                    '🔴 Phase 5: Story'
+                    '🟢 Phase 1: Foundation (3 lessons)',
+                    '🔵 Phase 2: SQL (3 lessons)',
+                    '🟠 Phase 3: Python (2 lessons)',
+                    '🟣 Phase 4: EDA (2 lessons)',
+                    '🔴 Phase 5: Visualisation (1 lesson)'
                 ],
                 datasets: [{
-                    label: 'Classes per Phase',
-                    data: [2, 5, 3, 3, 2],
+                    label: 'Lessons per Phase',
+                    data: [3, 3, 2, 2, 1],
                     backgroundColor: [
-                        '#10B981', 
-                        '#3B82F6', 
-                        '#F59E0B', 
-                        '#8B5CF6', 
-                        '#EF4444'  
+                        '#10B981',
+                        '#3B82F6',
+                        '#F59E0B',
+                        '#8B5CF6',
+                        '#EF4444'
                     ],
-                    hoverOffset: 4
+                    hoverOffset: 8
                 }]
             };
 
-            const config = {
+            const ctx = document.getElementById('phaseChart').getContext('2d');
+            new Chart(ctx, {
                 type: 'doughnut',
                 data: phaseData,
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: {
-                            position: 'top',
-                        },
-                        title: {
-                            display: true,
-                            text: 'Course Content Distribution by Phase'
+                        legend: { position: 'bottom', labels: { font: { size: 12 }, padding: 16 } },
+                        title: { display: true, text: 'Lessons per Phase (10 total)', font: { size: 14 } },
+                        tooltip: {
+                            callbacks: {
+                                label: ctx => ` ${ctx.parsed} lesson${ctx.parsed > 1 ? 's' : ''}`
+                            }
                         }
                     }
-                },
-            };
-
-            const ctx = document.getElementById('phaseChart').getContext('2d');
-            new Chart(ctx, config);
+                }
+            });
 
             const navButtons = document.querySelectorAll('.nav-button');
             const contentTabs = document.querySelectorAll('.content-tab');
@@ -335,19 +608,12 @@
             navButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const targetTab = button.dataset.tab;
-
-                    navButtons.forEach(btn => {
-                        btn.classList.remove('active');
-                    });
+                    navButtons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
-
                     contentTabs.forEach(tab => {
-                        if (tab.id === targetTab) {
-                            tab.classList.remove('hidden');
-                        } else {
-                            tab.classList.add('hidden');
-                        }
+                        tab.id === targetTab ? tab.classList.remove('hidden') : tab.classList.add('hidden');
                     });
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             });
         });
