@@ -251,20 +251,25 @@ Auto-save means VSCode will automatically save your files as you type. This prev
 
 Git is a tool for saving and tracking changes to your code. Think of it like a very powerful "Track Changes" feature in Word, but for code files.
 
-### Part A: Check if Git is already installed
-
-Git comes pre-installed in Ubuntu. Let's verify this:
+### Part A: Install Git
 
 1. Open a new **Terminal in VSCode** by clicking the **Terminal** menu at the top, then **New Terminal**
-2. A black panel will open at the bottom of VSCode. Make sure it says `username@COMPUTERNAME` (WSL prompt)
-3. Type the following and press **Enter**:
+2. A black panel will open at the bottom of VSCode. Make sure it shows your WSL prompt (`username@COMPUTERNAME`)
+3. Run the following command to install Git:
+
+```bash
+sudo apt install git
+```
+
+4. It will ask for your Linux password — type it and press **Enter** (no characters will appear as you type)
+5. If asked `Do you want to continue? [Y/n]` — type `Y` and press **Enter**
+6. Wait for the installation to finish, then confirm Git installed correctly:
 
 ```bash
 git --version
 ```
 
-> ✅ If you see something like `git version 2.x.x`, Git is already installed — skip to **Part B**.  
-> If you see "command not found", type the following and press Enter: `sudo apt install git`, then type `Y` when prompted.
+> ✅ You should see something like `git version 2.x.x`. If so, Git is installed successfully.
 
 ### Part B: Configure Git with your name and email
 
