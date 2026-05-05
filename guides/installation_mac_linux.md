@@ -5,7 +5,7 @@ This guide will walk you through installing all the software you need for this c
 > ⚠️ **Intel Mac users:** Unfortunately, Intel-based Macs are no longer supported by this course. Key software packages (including PyTorch and Conda) have ended support for Intel Macs as of 2025. Please contact your instructor for alternatives before proceeding.
 >
 > **Not sure if you have an Intel or Apple Silicon Mac?** Click the  (Apple logo) in the top-left corner → **About This Mac**. Look at the "Chip" or "Processor" field:
-> - **Apple M1 / M2 / M3 / M4** → ✅ You're good to go!
+> - **Apple M1 / M2 / M3 / M4 / M5** → ✅ You're good to go!
 > - **Intel Core i5 / i7 / i9** → ❌ Intel Mac — contact your instructor
 
 > 🐧 **Linux users:** This guide applies to you too! The steps are nearly identical. Where differences exist, they are marked with **[Linux]**.
@@ -15,7 +15,7 @@ This guide will walk you through installing all the software you need for this c
 ## 📋 Before You Begin — Hardware Check
 
 **Minimum requirements:**
-- Mac with Apple Silicon chip (M1, M2, M3, or M4), running macOS Ventura or later
+- Mac with Apple Silicon chip (M1, M2, M3, M4 or M5), running macOS Ventura or later
 - **[Linux]** Any modern 64-bit Linux distribution (Ubuntu 20.04+, Debian 11+, Fedora 36+, etc.)
 - 16 GB RAM recommended
 - 50 GB free storage space
@@ -26,7 +26,7 @@ This guide will walk you through installing all the software you need for this c
 2. Click **About This Mac**
 3. Note the macOS version shown (e.g. "macOS Sonoma 14.x")
 
-> ✅ **Checkpoint 0:** Confirm you see Apple M1/M2/M3/M4 as the chip. If you're on macOS, version 13 (Ventura) or later is recommended. Contact your instructor if you are unsure.
+> ✅ **Checkpoint 0:** Confirm you see Apple M1/M2/M3/M4/M5 as the chip. If you're on macOS, version 13 (Ventura) or later is recommended. Contact your instructor if you are unsure.
 
 ---
 
@@ -119,7 +119,7 @@ git config --global http.postBuffer 524288000
 
 Miniconda manages Python and all the software packages we use in this course. It lets us create isolated "environments" for different projects — like separate workspaces — so software from one project doesn't interfere with another.
 
-### For Mac (Apple Silicon — M1/M2/M3/M4)
+### For Mac (Apple Silicon — M1/M2/M3/M4/M5)
 
 1. Use the **same Terminal window** from Step 1, or open a new one (press ⌘ + Space, type `Terminal`, press Enter)
 2. Run the following commands **one at a time** — type or paste each line, press Enter, and wait for it to finish before running the next:
