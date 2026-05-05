@@ -5,7 +5,7 @@ This guide will walk you through installing all the software you need for this c
 > ⚠️ **Intel Mac users:** Unfortunately, Intel-based Macs are no longer supported by this course. Key software packages (including PyTorch and Conda) have ended support for Intel Macs as of 2025. Please contact your instructor for alternatives before proceeding.
 >
 > **Not sure if you have an Intel or Apple Silicon Mac?** Click the  (Apple logo) in the top-left corner → **About This Mac**. Look at the "Chip" or "Processor" field:
-> - **Apple M1 / M2 / M3 / M4 / M5** → ✅ You're good to go!
+> - **Apple M1 / M2 / M3 / M4** → ✅ You're good to go!
 > - **Intel Core i5 / i7 / i9** → ❌ Intel Mac — contact your instructor
 
 > 🐧 **Linux users:** This guide applies to you too! The steps are nearly identical. Where differences exist, they are marked with **[Linux]**.
@@ -15,7 +15,7 @@ This guide will walk you through installing all the software you need for this c
 ## 📋 Before You Begin — Hardware Check
 
 **Minimum requirements:**
-- Mac with Apple Silicon chip (M1, M2, M3, M4 or M5), running macOS Ventura or later
+- Mac with Apple Silicon chip (M1, M2, M3, or M4), running macOS Ventura or later
 - **[Linux]** Any modern 64-bit Linux distribution (Ubuntu 20.04+, Debian 11+, Fedora 36+, etc.)
 - 16 GB RAM recommended
 - 50 GB free storage space
@@ -24,9 +24,9 @@ This guide will walk you through installing all the software you need for this c
 **How to check your macOS version:**
 1. Click the  (Apple logo) in the top-left corner of your screen
 2. Click **About This Mac**
-3. Note the macOS version shown (e.g. "macOS Sonoma 14.x" or "Thoe 26.4.1")
+3. Note the macOS version shown (e.g. "macOS Sonoma 14.x")
 
-> ✅ **Checkpoint 0:** Confirm you see Apple M1/M2/M3/M4/M5 as the chip. If you're on macOS, version 13 (Ventura) or later is recommended. Contact your instructor if you are unsure.
+> ✅ **Checkpoint 0:** Confirm you see Apple M1/M2/M3/M4 as the chip. If you're on macOS, version 13 (Ventura) or later is recommended. Contact your instructor if you are unsure.
 
 ---
 
@@ -121,7 +121,7 @@ Miniconda manages Python and all the software packages we use in this course. It
 
 ### For Mac (Apple Silicon — M1/M2/M3/M4)
 
-1. Open your **Terminal** (press ⌘ + Space, type Terminal, press Enter)
+1. Use the **same Terminal window** from Step 1, or open a new one (press ⌘ + Space, type `Terminal`, press Enter)
 2. Run the following commands **one at a time** — type or paste each line, press Enter, and wait for it to finish before running the next:
 
 **Step 2.1** — Create a folder for Miniconda:
@@ -162,14 +162,35 @@ conda init --all
 
 ### For Linux
 
+First, check your CPU type by running:
+```bash
+uname -m
+```
+- If it shows `x86_64` → you have an Intel/AMD CPU
+- If it shows `aarch64` → you have an ARM CPU
+
 **Step 2.1** — Download Miniconda:
+
+**Intel/AMD (x86_64):**
 ```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 ```
 
+**ARM (aarch64):**
+```bash
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh
+```
+
 **Step 2.2** — Run the installer:
+
+**Intel/AMD:**
 ```bash
 bash ~/Miniconda3-latest-Linux-x86_64.sh
+```
+
+**ARM:**
+```bash
+bash ~/Miniconda3-latest-Linux-aarch64.sh
 ```
 
 Follow the prompts:
@@ -180,9 +201,15 @@ Follow the prompts:
 
 **Step 2.3** — Close your terminal and open a new one.
 
-> ✅ **Checkpoint 2:** In the **new** terminal window, your command prompt should now start with **(base)**, like this:
+> ✅ **Checkpoint 2:** In the **new** terminal window, your command prompt should now start with **(base)**:
+>
+> **Mac:**
 > ```
 > (base) your-macbook-name ~ %
+> ```
+> **Linux:**
+> ```
+> (base) username@hostname:~$
 > ```
 > The `(base)` part means Miniconda is installed and running correctly. If you don't see `(base)`, try closing and reopening the terminal. If it still doesn't appear, run `conda init --all` and try again.
 
@@ -264,11 +291,15 @@ GitHub is the website where your course materials and assignments are stored. We
 1. Open **VSCode**
 2. Click **Help** in the top menu bar, then click **Welcome**
 3. On the Welcome page, look for **"Clone Git Repository"** and click it
-4. A text box will appear at the top of VSCode — type any GitHub URL (e.g. `https://github.com`) and press **Enter**
+4. A text box will appear at the top of VSCode — type the following and press **Enter**:
+   ```
+   https://github.com
+   ```
+   > ℹ️ This URL is not a real repository — we're using it only to trigger the GitHub sign-in prompt. You won't actually clone anything at this step.
 5. VSCode will show a prompt asking you to **Sign in with GitHub** — click it
 6. Your web browser will open. Log in to your GitHub account if you aren't already
 7. Click **Authorize** when GitHub asks if you want to give VSCode access
-8. Return to VSCode — it may ask you to confirm the sign-in
+8. Return to VSCode — it may ask you to confirm the sign-in. Press **Escape** to dismiss the clone prompt.
 
 📹 [Watch: Configuring Git and Using Git in VSCode](https://drive.google.com/file/d/1kyBHa4G4K5bgTBVrA-doMxuZdfXr8jZp/view?usp=drive_link)
 
@@ -310,16 +341,18 @@ This final check confirms that all the software works together correctly. This i
 
 ### Part A: Clone the course repository
 
+This time you will clone the **actual course repository** — this is different from Step 6 where you only signed in to GitHub.
+
 1. Open **VSCode**
 2. Click **Help** → **Welcome**
 3. Click **"Clone Git Repository"**
-4. Paste the following URL and press **Enter**:
+4. Paste the following course repository URL and press **Enter**:
 
 ```
 https://github.com/su-ntu-ctp/6m-data-1.0-Welcome-Onboarding
 ```
 
-5. Choose a folder to save it (your home folder or Desktop is fine)
+5. A folder picker will appear — choose where to save it (your home folder or Desktop is fine) and click **Select as Repository Destination**
 6. Click **Open** when VSCode asks if you want to open the cloned repository
 
 > ✅ If the repository files appear in VSCode's file explorer panel on the left, cloning worked correctly.
