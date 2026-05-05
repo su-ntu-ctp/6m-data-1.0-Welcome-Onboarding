@@ -169,101 +169,21 @@ The installer will start. Follow these prompts carefully:
 
 ---
 
-## Step 4 — Install Visual Studio Code (VSCode)
-
-VSCode is the text editor we use to write Python and SQL code. Think of it as Microsoft Word, but for code.
-
-1. Open your regular web browser (Chrome, Edge, Firefox)
-2. Go to: **https://code.visualstudio.com/download**
-3. Click the **Windows** download button (the large blue button)
-4. Once the file downloads, **open it** (it will be in your Downloads folder, named something like `VSCodeSetup-x64-1.xx.x.exe`)
-5. Follow the installer:
-   - Click **Next** through the first screens
-   - On the screen that says **"Select Additional Tasks"**, tick the box **"Add to PATH"** and also **"Open with Code"** if you see them
-   - Click **Next**, then **Install**
-   - Click **Finish** when done (leave "Launch Visual Studio Code" ticked)
-
-VSCode should open automatically when installation completes.
-
-📹 [Watch: Install VSCode for Windows](https://drive.google.com/file/d/15s22OloEAY3SMtiFE_uSjCiM73cZD9nW/view?usp=drive_link)
-
-> ✅ **Checkpoint 4:** VSCode opens and you can see the **Welcome** tab with a "Get Started" screen. If VSCode did not open, try finding it in the Start menu by searching for "Visual Studio Code".
-
----
-
-## Step 5 — Connect VSCode to WSL
-
-Now we connect VSCode to the Ubuntu/Linux environment you installed in Steps 1–3. This is important — from this point forward, all coding will happen inside WSL.
-
-1. In VSCode, look at the **bottom-left corner** of the screen. You will see a small blue icon that looks like `><`
-2. Click that **blue `><` icon**
-3. A menu will appear at the top of the screen. Click **"Connect to WSL"**
-4. VSCode will reload and install the WSL extension automatically. Wait about 30 seconds.
-
-📹 [Watch: Connect VSCode to WSL](https://drive.google.com/file/d/1BbKKiy_VsBnEd8Y8Ar89zBSHpC_3w-4V/view?usp=drive_link)
-
-> ✅ **Checkpoint 5:** After connecting, the bottom-left corner of VSCode should now show **"WSL: Ubuntu"** (instead of the `><` symbol). This means VSCode is now running inside Linux.
-
----
-
-## Step 6 — Install VSCode Extensions
-
-Extensions add extra features to VSCode. We need three extensions for this course.
-
-> ⚠️ **Important:** Make sure you completed Step 5 first. The bottom-left corner of VSCode must show **"WSL: Ubuntu"** before you install these extensions, so they install in the correct place.
-
-1. In VSCode, look at the left sidebar. Click the **Extensions** icon (it looks like four small squares, with one square slightly separated)
-2. A search bar will appear at the top. Search for and install each of the following extensions:
-
-**Extension 1: Python**
-- Type `Python` in the search bar
-- Click the result that says **Python** by *Microsoft*
-- Click the blue **Install** button
-- Wait for the installation to complete
-
-**Extension 2: Jupyter**
-- Clear the search bar and type `Jupyter`
-- Click the result that says **Jupyter** by *Microsoft*
-- Click **Install**
-
-**Extension 3: Colab**
-- Clear the search bar and type `Colab`
-- Click the result that says **Colab** (by Google or similar)
-- Click **Install**
-
-> ✅ **Checkpoint 6:** For each of the three extensions, click on them in the Extensions panel. You should see **"Installed"** (or an "Uninstall" button, which means it's already installed). You should also see them listed under **"WSL: UBUNTU — INSTALLED"** rather than under "LOCAL". If they appear under LOCAL, please contact your instructor.
-
----
-
-## Step 7 — Enable Auto-Save in VSCode
-
-Auto-save means VSCode will automatically save your files as you type. This prevents a lot of common errors where code doesn't run because you forgot to save.
-
-1. In VSCode, click on **File** in the top menu bar
-2. Look for **Auto Save** in the dropdown menu
-3. Click **Auto Save** to enable it (a checkmark will appear next to it)
-
-> ✅ **Checkpoint 7:** Click on **File** again and confirm there is a **✓ checkmark** next to "Auto Save".
-
----
-
-## Step 8 — Install and Configure Git
+## Step 4 — Install and Configure Git
 
 Git is a tool for saving and tracking changes to your code. Think of it like a very powerful "Track Changes" feature in Word, but for code files.
 
 ### Part A: Install Git
 
-1. Open a new **Terminal in VSCode** by clicking the **Terminal** menu at the top, then **New Terminal**
-2. A black panel will open at the bottom of VSCode. Make sure it shows your WSL prompt (`username@COMPUTERNAME`)
-3. Run the following command to install Git:
+1. In the **Ubuntu** window that is still open (the one showing `(base) username@COMPUTERNAME:~$`), run the following command:
 
 ```bash
 sudo apt install git
 ```
 
-4. It will ask for your Linux password — type it and press **Enter** (no characters will appear as you type)
-5. If asked `Do you want to continue? [Y/n]` — type `Y` and press **Enter**
-6. Wait for the installation to finish, then confirm Git installed correctly:
+2. It will ask for your Linux password — type it and press **Enter** (no characters will appear as you type)
+3. If asked `Do you want to continue? [Y/n]` — type `Y` and press **Enter**
+4. Wait for the installation to finish, then confirm Git installed correctly:
 
 ```bash
 git --version
@@ -275,7 +195,7 @@ git --version
 
 This tells Git who you are. Use the **same email address you use for GitHub**.
 
-1. In the VSCode terminal, type the following (replace `Your Name` with your actual name, keep the quotes):
+1. In the Ubuntu window, type the following (replace `Your Name` with your actual name, keep the quotes):
 
 ```bash
 git config --global user.name "Your Name"
@@ -299,12 +219,90 @@ git config --global --list
 
 Press **Enter**.
 
-> ✅ **Checkpoint 8:** You should see two lines printed:
+> ✅ **Checkpoint 4:** You should see two lines printed:
 > ```
 > user.name=Your Name
 > user.email=your_github_email@example.com
 > ```
 > If you see your name and email printed correctly, Git is configured. 
+
+---
+
+## Step 5 — Install Visual Studio Code (VSCode)
+
+VSCode is the text editor we use to write Python and SQL code. Think of it as Microsoft Word, but for code.
+
+1. Open your regular web browser (Chrome, Edge, Firefox)
+2. Go to: **https://code.visualstudio.com/download**
+3. Click the **Windows** download button (the large blue button)
+4. Once the file downloads, **open it** (it will be in your Downloads folder, named something like `VSCodeSetup-x64-1.xx.x.exe`)
+5. Follow the installer:
+   - Click **Next** through the first screens
+   - On the screen that says **"Select Additional Tasks"**, tick the box **"Add to PATH"** and also **"Open with Code"** if you see them
+   - Click **Next**, then **Install**
+   - Click **Finish** when done (leave "Launch Visual Studio Code" ticked)
+
+VSCode should open automatically when installation completes.
+
+📹 [Watch: Install VSCode for Windows](https://drive.google.com/file/d/15s22OloEAY3SMtiFE_uSjCiM73cZD9nW/view?usp=drive_link)
+
+> ✅ **Checkpoint 5:** VSCode opens and you can see the **Welcome** tab with a "Get Started" screen. If VSCode did not open, try finding it in the Start menu by searching for "Visual Studio Code".
+
+---
+
+## Step 6 — Connect VSCode to WSL
+
+Now we connect VSCode to the Ubuntu/Linux environment you installed in Steps 1–4. This is important — from this point forward, all coding will happen inside WSL.
+
+1. In VSCode, look at the **bottom-left corner** of the screen. You will see a small blue icon that looks like `><`
+2. Click that **blue `><` icon**
+3. A menu will appear at the top of the screen. Click **"Connect to WSL"**
+4. VSCode will reload and install the WSL extension automatically. Wait about 30 seconds.
+
+📹 [Watch: Connect VSCode to WSL](https://drive.google.com/file/d/1BbKKiy_VsBnEd8Y8Ar89zBSHpC_3w-4V/view?usp=drive_link)
+
+> ✅ **Checkpoint 6:** After connecting, the bottom-left corner of VSCode should now show **"WSL: Ubuntu"** (instead of the `><` symbol). This means VSCode is now running inside Linux.
+
+---
+
+## Step 7 — Install VSCode Extensions
+
+Extensions add extra features to VSCode. We need three extensions for this course.
+
+> ⚠️ **Important:** Make sure you completed Step 6 first. The bottom-left corner of VSCode must show **"WSL: Ubuntu"** before you install these extensions, so they install in the correct place.
+
+1. In VSCode, look at the left sidebar. Click the **Extensions** icon (it looks like four small squares, with one square slightly separated)
+2. A search bar will appear at the top. Search for and install each of the following extensions:
+
+**Extension 1: Python**
+- Type `Python` in the search bar
+- Click the result that says **Python** by *Microsoft*
+- Click the blue **Install** button
+- Wait for the installation to complete
+
+**Extension 2: Jupyter**
+- Clear the search bar and type `Jupyter`
+- Click the result that says **Jupyter** by *Microsoft*
+- Click **Install**
+
+**Extension 3: Colab**
+- Clear the search bar and type `Colab`
+- Click the result that says **Colab** (by Google or similar)
+- Click **Install**
+
+> ✅ **Checkpoint 7:** For each of the three extensions, click on them in the Extensions panel. You should see **"Installed"** (or an "Uninstall" button, which means it's already installed). You should also see them listed under **"WSL: UBUNTU — INSTALLED"** rather than under "LOCAL". If they appear under LOCAL, please contact your instructor.
+
+---
+
+## Step 8 — Enable Auto-Save in VSCode
+
+Auto-save means VSCode will automatically save your files as you type. This prevents a lot of common errors where code doesn't run because you forgot to save.
+
+1. In VSCode, click on **File** in the top menu bar
+2. Look for **Auto Save** in the dropdown menu
+3. Click **Auto Save** to enable it (a checkmark will appear next to it)
+
+> ✅ **Checkpoint 8:** Click on **File** again and confirm there is a **✓ checkmark** next to "Auto Save".
 
 ---
 
@@ -375,7 +373,7 @@ Follow the full verification steps in the [Verification Guide](run_conda_python.
 | `(base)` doesn't appear in terminal | Close and re-open the Ubuntu window; if still missing, re-run `conda init --all` and open a fresh window |
 | VSCode doesn't show "WSL: Ubuntu" | Click the blue `><` icon in the bottom-left corner and select "Connect to WSL" |
 | Extensions installed under "LOCAL" instead of "WSL: UBUNTU" | Make sure you're connected to WSL first, then uninstall and reinstall the extensions |
-| Git shows "command not found" | Run `sudo apt install git` in the WSL terminal |
+| Git shows "command not found" | Run `sudo apt install git` in the Ubuntu window |
 
 If you're still stuck, take a **screenshot** of the error message and share it with your instructor or in the class Discord.
 
