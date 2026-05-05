@@ -13,7 +13,7 @@ Go directly to the guide for your computer's operating system:
 | My computer runs... | Go to this guide |
 |---|---|
 | 🪟 **Windows** (any laptop or desktop running Windows 10 or 11) | **[→ Windows Installation Guide](guides/installation_windows.md)** |
-| 🍎 **Mac with Apple Silicon** (M1, M2, M3, or M4 chip) | **[→ Mac / Linux Installation Guide](guides/installation_mac_linux.md)** |
+| 🍎 **Mac with Apple Silicon** (M1, M2, M3, M4 or M5 chip) | **[→ Mac / Linux Installation Guide](guides/installation_mac_linux.md)** |
 | 🐧 **Linux** (Ubuntu, Fedora, Debian, etc.) | **[→ Mac / Linux Installation Guide](guides/installation_mac_linux.md)** |
 
 Each guide includes step-by-step instructions with checkpoints after every step so you can confirm each tool is working before moving on.
