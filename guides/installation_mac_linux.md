@@ -30,36 +30,7 @@ This guide will walk you through installing all the software you need for this c
 
 ---
 
-## Step 1 — Install Visual Studio Code (VSCode)
-
-VSCode is the text editor we use to write Python and SQL code. Think of it as Microsoft Word, but for code.
-
-**For Mac:**
-1. Open Safari or Chrome and go to: **https://code.visualstudio.com/download**
-2. Click the **Mac** download button — make sure to select **Apple Silicon** (not Intel)
-3. A `.zip` file will download. Once it's done, open your **Downloads** folder
-4. **Double-click** the downloaded `.zip` file to unzip it — this creates the "Visual Studio Code" application
-5. **Drag** the "Visual Studio Code" app into your **Applications** folder (open Finder → Applications, then drag it across)
-6. Open VSCode from your Applications folder by double-clicking it
-
-> ⚠️ If macOS says "Visual Studio Code cannot be opened because Apple cannot check it for malicious software", go to **System Settings → Privacy & Security → scroll down** and click **"Open Anyway"**.
-
-**[Linux]:**
-1. Go to **https://code.visualstudio.com/download** and download the `.deb` (Ubuntu/Debian) or `.rpm` (Fedora/RHEL) package
-2. Open a terminal and run (for Debian/Ubuntu):
-```bash
-sudo dpkg -i ~/Downloads/code_*.deb
-sudo apt install -f
-```
-3. Launch VSCode by typing `code` in the terminal, or find it in your application menu
-
-📹 [Watch: Install VSCode for Mac](https://drive.google.com/file/d/1wQY5fhUb7pCo7nHJwbrIP6UCYFNSOkRd/view?usp=drive_link)
-
-> ✅ **Checkpoint 1:** VSCode opens and you can see the **Welcome** tab with a "Get Started" screen. The window title should say "Visual Studio Code".
-
----
-
-## Step 2 — Install Git
+## Step 1 — Install Git
 
 Git is a tool for saving and tracking changes in your code. Think of it as a very powerful "Track Changes" feature, but for code.
 
@@ -98,7 +69,7 @@ sudo dnf install git
 git --version
 ```
 
-> ✅ **Checkpoint 2A:** You should see something like `git version 2.x.x`. If so, Git is installed successfully.
+> ✅ **Checkpoint 1A:** You should see something like `git version 2.x.x`. If so, Git is installed successfully.
 
 ### Part B: Configure Git with your name and email
 
@@ -128,7 +99,7 @@ git config --global --list
 
 Press **Enter**.
 
-> ✅ **Checkpoint 2B:** You should see two lines printed:
+> ✅ **Checkpoint 1B:** You should see two lines printed:
 > ```
 > user.name=Your Name
 > user.email=your_github_email@example.com
@@ -144,7 +115,7 @@ git config --global http.postBuffer 524288000
 
 ---
 
-## Step 3 — Install Miniconda
+## Step 2 — Install Miniconda
 
 Miniconda manages Python and all the software packages we use in this course. It lets us create isolated "environments" for different projects — like separate workspaces — so software from one project doesn't interfere with another.
 
@@ -153,50 +124,50 @@ Miniconda manages Python and all the software packages we use in this course. It
 1. Open your **Terminal** (press ⌘ + Space, type Terminal, press Enter)
 2. Run the following commands **one at a time** — type or paste each line, press Enter, and wait for it to finish before running the next:
 
-**Step 3.1** — Create a folder for Miniconda:
+**Step 2.1** — Create a folder for Miniconda:
 ```bash
 mkdir -p ~/miniconda3
 ```
 
-**Step 3.2** — Download Miniconda:
+**Step 2.2** — Download Miniconda:
 ```bash
 curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -o ~/miniconda3/miniconda.sh
 ```
 
 This may take a minute or two. You'll see a progress bar.
 
-**Step 3.3** — Install Miniconda:
+**Step 2.3** — Install Miniconda:
 ```bash
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 ```
 
 Wait for the installation to complete.
 
-**Step 3.4** — Remove the installer file (it's no longer needed):
+**Step 2.4** — Remove the installer file (it's no longer needed):
 ```bash
 rm ~/miniconda3/miniconda.sh
 ```
 
-**Step 3.5** — Activate Miniconda:
+**Step 2.5** — Activate Miniconda:
 ```bash
 source ~/miniconda3/bin/activate
 ```
 
-**Step 3.6** — Initialise Miniconda for all terminal types:
+**Step 2.6** — Initialise Miniconda for all terminal types:
 ```bash
 conda init --all
 ```
 
-**Step 3.7** — **Close the Terminal window completely** and open a new one.
+**Step 2.7** — **Close the Terminal window completely** and open a new one.
 
 ### For Linux
 
-**Step 3.1** — Download Miniconda:
+**Step 2.1** — Download Miniconda:
 ```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 ```
 
-**Step 3.2** — Run the installer:
+**Step 2.2** — Run the installer:
 ```bash
 bash ~/Miniconda3-latest-Linux-x86_64.sh
 ```
@@ -207,13 +178,42 @@ Follow the prompts:
 - Press **Enter** to confirm the default installation location
 - Type `yes` and press **Enter** to initialise conda
 
-**Step 3.3** — Close your terminal and open a new one.
+**Step 2.3** — Close your terminal and open a new one.
 
-> ✅ **Checkpoint 3:** In the **new** terminal window, your command prompt should now start with **(base)**, like this:
+> ✅ **Checkpoint 2:** In the **new** terminal window, your command prompt should now start with **(base)**, like this:
 > ```
 > (base) your-macbook-name ~ %
 > ```
 > The `(base)` part means Miniconda is installed and running correctly. If you don't see `(base)`, try closing and reopening the terminal. If it still doesn't appear, run `conda init --all` and try again.
+
+---
+
+## Step 3 — Install Visual Studio Code (VSCode)
+
+VSCode is the text editor we use to write Python and SQL code. Think of it as Microsoft Word, but for code.
+
+**For Mac:**
+1. Open Safari or Chrome and go to: **https://code.visualstudio.com/download**
+2. Click the **Mac** download button — make sure to select **Apple Silicon** (not Intel)
+3. A `.zip` file will download. Once it's done, open your **Downloads** folder
+4. **Double-click** the downloaded `.zip` file to unzip it — this creates the "Visual Studio Code" application
+5. **Drag** the "Visual Studio Code" app into your **Applications** folder (open Finder → Applications, then drag it across)
+6. Open VSCode from your Applications folder by double-clicking it
+
+> ⚠️ If macOS says "Visual Studio Code cannot be opened because Apple cannot check it for malicious software", go to **System Settings → Privacy & Security → scroll down** and click **"Open Anyway"**.
+
+**[Linux]:**
+1. Go to **https://code.visualstudio.com/download** and download the `.deb` (Ubuntu/Debian) or `.rpm` (Fedora/RHEL) package
+2. Open a terminal and run (for Debian/Ubuntu):
+```bash
+sudo dpkg -i ~/Downloads/code_*.deb
+sudo apt install -f
+```
+3. Launch VSCode by typing `code` in the terminal, or find it in your application menu
+
+📹 [Watch: Install VSCode for Mac](https://drive.google.com/file/d/1wQY5fhUb7pCo7nHJwbrIP6UCYFNSOkRd/view?usp=drive_link)
+
+> ✅ **Checkpoint 3:** VSCode opens and you can see the **Welcome** tab with a "Get Started" screen. The window title should say "Visual Studio Code".
 
 ---
 
