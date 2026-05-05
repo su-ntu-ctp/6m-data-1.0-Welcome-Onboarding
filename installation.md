@@ -4,7 +4,7 @@
 
 > **Intel Mac users:** Intel-based Macs are no longer supported. Please contact your instructor before proceeding.
 >
-> **Not sure which Mac you have?** Click the  (Apple menu) → **About This Mac**. If "Chip" shows **Apple M1/M2/M3/M4**, you're on Apple Silicon. If "Processor" shows **Intel**, contact your instructor.
+> **Not sure which Mac you have?** Click the  (Apple menu) → **About This Mac**. If "Chip" shows **Apple M1/M2/M3/M4/M5**, you're on Apple Silicon. If "Processor" shows **Intel**, contact your instructor.
 
 ## 👇 Choose Your Operating System
 
