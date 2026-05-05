@@ -62,7 +62,9 @@ wsl --install
    - **Create a password** — type a password and press Enter. **Note: you won't see any characters appear as you type — this is normal for security reasons.** Type it carefully and press Enter.
    - **Confirm the password** — type it again and press Enter
 
-> ✅ **Checkpoint 1:** After setting your username and password, you should see a command prompt that looks like this:
+4. Once you have set your username and password, an **Ubuntu terminal window** will open automatically — this is a separate window from PowerShell. You can close PowerShell now. All remaining steps in this section will use the Ubuntu window.
+
+> ✅ **Checkpoint 1:** The Ubuntu terminal window should show a command prompt that looks like this:
 > ```
 > username@COMPUTERNAME:~$
 > ```
@@ -175,7 +177,7 @@ Git is a tool for saving and tracking changes to your code. Think of it like a v
 
 ### Part A: Install Git
 
-1. In the **Ubuntu** window that is still open (the one showing `(base) username@COMPUTERNAME:~$`), run the following command:
+1. In the **Ubuntu** window you reopened at the end of Step 3 (the one showing `(base) username@COMPUTERNAME:~$`), run the following command:
 
 ```bash
 sudo apt install git
@@ -189,7 +191,7 @@ sudo apt install git
 git --version
 ```
 
-> ✅ You should see something like `git version 2.x.x`. If so, Git is installed successfully.
+> ✅ **Checkpoint 4A:** You should see something like `git version 2.x.x`. If so, Git is installed successfully.
 
 ### Part B: Configure Git with your name and email
 
@@ -312,9 +314,13 @@ GitHub is the website where your course materials and assignments are stored. We
 
 1. In VSCode, click **Help** in the top menu bar, then click **Welcome**
 2. On the Welcome page, click **"Clone Git Repository"**
-3. A text box will appear at the top — type any GitHub URL (e.g. `https://github.com`) and press **Enter**
+3. A text box will appear at the top — type the following and press **Enter**:
+   ```
+   https://github.com
+   ```
+   > ℹ️ This URL is not a real repository — we're using it only to trigger the GitHub sign-in prompt. You won't actually clone anything at this step.
 4. VSCode will ask you to **Sign in with GitHub** — click the button and follow the prompts in your browser to log in to your GitHub account
-5. Once signed in, close the browser tab and return to VSCode
+5. Once signed in, close the browser tab and return to VSCode. Press **Escape** to dismiss the clone prompt.
 
 📹 [Watch: Configuring Git and Using Git in VSCode](https://drive.google.com/file/d/1kyBHa4G4K5bgTBVrA-doMxuZdfXr8jZp/view?usp=drive_link)
 
@@ -341,18 +347,20 @@ This final check confirms that all the software works together correctly. This i
 
 ### Part A: Clone the course repository
 
+This time you will clone the **actual course repository** — this is different from Step 9 where you only signed in to GitHub.
+
 1. In VSCode, click **Help** → **Welcome**
 2. Click **"Clone Git Repository"**
-3. Paste the following URL and press **Enter**:
+3. Paste the following course repository URL and press **Enter**:
 
 ```
 https://github.com/su-ntu-ctp/6m-data-1.0-Welcome-Onboarding
 ```
 
-4. Choose a folder to save it in (your home folder is fine)
+4. A folder picker will appear — choose where to save it (your home folder is fine) and click **Select as Repository Destination**
 5. Click **Open** when VSCode asks if you want to open the cloned repository
 
-> ✅ If the repository appears in VSCode's file explorer on the left side, cloning worked correctly.
+> ✅ If the repository files appear in VSCode's file explorer panel on the left, cloning worked correctly.
 
 ### Part B: Create a test database
 
