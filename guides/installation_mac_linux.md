@@ -59,50 +59,11 @@ sudo apt install -f
 
 ---
 
-## Step 2 — Install VSCode Extensions
-
-Extensions add extra features to VSCode. We need three extensions for this course.
-
-1. In VSCode, look at the **left sidebar**. Click the **Extensions** icon — it looks like four small squares with one square slightly separated from the others
-2. A search bar will appear at the top of the sidebar. Search for and install each extension below:
-
-**Extension 1: Python**
-- Type `Python` in the search bar
-- Click the result that says **Python** by *Microsoft* (it should be the first result)
-- Click the blue **Install** button
-- Wait for the installation bar to complete
-
-**Extension 2: Jupyter**
-- Clear the search bar and type `Jupyter`
-- Click the result that says **Jupyter** by *Microsoft*
-- Click **Install**
-
-**Extension 3: Colab**
-- Clear the search bar and type `Colab`
-- Click the result that says **Colab** (Google Colaboratory integration)
-- Click **Install**
-
-> ✅ **Checkpoint 2:** Click on each of the three extensions in the panel. You should see an **"Uninstall"** button (which means they are installed). All three — Python, Jupyter, and Colab — should show as installed.
-
----
-
-## Step 3 — Enable Auto-Save in VSCode
-
-Auto-save means VSCode will automatically save your files as you type. This prevents a very common mistake where code doesn't run because the file wasn't saved.
-
-1. In VSCode, click **File** in the top menu bar (on Mac this is at the very top of the screen)
-2. Look for **Auto Save** in the dropdown
-3. Click **Auto Save** to enable it — a checkmark ✓ will appear next to it
-
-> ✅ **Checkpoint 3:** Click **File** again and confirm you can see a **✓ checkmark** next to "Auto Save".
-
----
-
-## Step 4 — Install Git
+## Step 2 — Install Git
 
 Git is a tool for saving and tracking changes in your code. Think of it as a very powerful "Track Changes" feature, but for code.
 
-### Check if Git is already installed
+### Part A: Install Git
 
 1. Open **Terminal** on your Mac:
    - Press **⌘ + Space** to open Spotlight Search
@@ -117,38 +78,31 @@ Git is a tool for saving and tracking changes in your code. Think of it as a ver
 git --version
 ```
 
-> ✅ If you see something like `git version 2.x.x`, Git is already installed — skip to **Step 4B: Configure Git**.
+**For Mac:** If Git is not yet installed, macOS will automatically show a pop-up window asking you to install the **Command Line Developer Tools**. Click **Install** and wait for it to complete — this can take 5–15 minutes depending on your internet speed.
 
-### Install Git (if it's not installed yet)
-
-**For Mac:**
-
-If you see "command not found", type the following and press **Enter**:
-
-```bash
-xcode-select --install
-```
-
-A pop-up window will appear. Click **Install** and wait for it to complete (this can take 5–15 minutes depending on your internet speed).
-
-**[Linux — Ubuntu/Debian]:**
-
+**[Linux — Ubuntu/Debian]:** If you see "command not found", run:
 ```bash
 sudo apt update
 sudo apt install git
 ```
+Type your password when prompted and type `Y` to confirm.
 
-Type your computer password when prompted and press **Enter**. Type `Y` when asked to confirm.
-
-**[Linux — Fedora]:**
-
+**[Linux — Fedora]:** If you see "command not found", run:
 ```bash
 sudo dnf install git
 ```
 
-### Configure Git with your name and email
+3. Once installation is complete, run the version check again to confirm:
 
-This tells Git who you are. Use the same email address you use for **GitHub**.
+```bash
+git --version
+```
+
+> ✅ **Checkpoint 2A:** You should see something like `git version 2.x.x`. If so, Git is installed successfully.
+
+### Part B: Configure Git with your name and email
+
+This tells Git who you are. Use the **same email address you use for GitHub**.
 
 1. In the terminal, type the following (replace `Your Name` with your actual name — keep the quotation marks):
 
@@ -174,24 +128,136 @@ git config --global --list
 
 Press **Enter**.
 
-**Mac-only optional step** (helps prevent errors when uploading large files):
-
-```bash
-git config --global http.postBuffer 524288000
-```
-
-📹 [Watch: Install Git for Mac](https://drive.google.com/file/d/1_NdWjc4pqYkuaFqRgYCGI62FoDufK4Bs/view?usp=drive_link)
-
-> ✅ **Checkpoint 4:** After running `git config --global --list`, you should see:
+> ✅ **Checkpoint 2B:** You should see two lines printed:
 > ```
 > user.name=Your Name
 > user.email=your_github_email@example.com
 > ```
 > If you see your name and email printed correctly, Git is configured. 
 
+**Mac-only optional step** (helps prevent errors when uploading large files):
+```bash
+git config --global http.postBuffer 524288000
+```
+
+📹 [Watch: Install Git for Mac](https://drive.google.com/file/d/1_NdWjc4pqYkuaFqRgYCGI62FoDufK4Bs/view?usp=drive_link)
+
 ---
 
-## Step 5 — Connect VSCode with GitHub
+## Step 3 — Install Miniconda
+
+Miniconda manages Python and all the software packages we use in this course. It lets us create isolated "environments" for different projects — like separate workspaces — so software from one project doesn't interfere with another.
+
+### For Mac (Apple Silicon — M1/M2/M3/M4)
+
+1. Open your **Terminal** (press ⌘ + Space, type Terminal, press Enter)
+2. Run the following commands **one at a time** — type or paste each line, press Enter, and wait for it to finish before running the next:
+
+**Step 3.1** — Create a folder for Miniconda:
+```bash
+mkdir -p ~/miniconda3
+```
+
+**Step 3.2** — Download Miniconda:
+```bash
+curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -o ~/miniconda3/miniconda.sh
+```
+
+This may take a minute or two. You'll see a progress bar.
+
+**Step 3.3** — Install Miniconda:
+```bash
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+```
+
+Wait for the installation to complete.
+
+**Step 3.4** — Remove the installer file (it's no longer needed):
+```bash
+rm ~/miniconda3/miniconda.sh
+```
+
+**Step 3.5** — Activate Miniconda:
+```bash
+source ~/miniconda3/bin/activate
+```
+
+**Step 3.6** — Initialise Miniconda for all terminal types:
+```bash
+conda init --all
+```
+
+**Step 3.7** — **Close the Terminal window completely** and open a new one.
+
+### For Linux
+
+**Step 3.1** — Download Miniconda:
+```bash
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+```
+
+**Step 3.2** — Run the installer:
+```bash
+bash ~/Miniconda3-latest-Linux-x86_64.sh
+```
+
+Follow the prompts:
+- Press **Enter** to read the licence, then **Space** or **Enter** to scroll to the end
+- Type `yes` and press **Enter** to accept the licence
+- Press **Enter** to confirm the default installation location
+- Type `yes` and press **Enter** to initialise conda
+
+**Step 3.3** — Close your terminal and open a new one.
+
+> ✅ **Checkpoint 3:** In the **new** terminal window, your command prompt should now start with **(base)**, like this:
+> ```
+> (base) your-macbook-name ~ %
+> ```
+> The `(base)` part means Miniconda is installed and running correctly. If you don't see `(base)`, try closing and reopening the terminal. If it still doesn't appear, run `conda init --all` and try again.
+
+---
+
+## Step 4 — Install VSCode Extensions
+
+Extensions add extra features to VSCode. We need three extensions for this course.
+
+1. Open **VSCode**
+2. Look at the **left sidebar**. Click the **Extensions** icon — it looks like four small squares with one square slightly separated from the others
+3. A search bar will appear at the top of the sidebar. Search for and install each extension below:
+
+**Extension 1: Python**
+- Type `Python` in the search bar
+- Click the result that says **Python** by *Microsoft* (it should be the first result)
+- Click the blue **Install** button
+- Wait for the installation bar to complete
+
+**Extension 2: Jupyter**
+- Clear the search bar and type `Jupyter`
+- Click the result that says **Jupyter** by *Microsoft*
+- Click **Install**
+
+**Extension 3: Colab**
+- Clear the search bar and type `Colab`
+- Click the result that says **Colab** (Google Colaboratory integration)
+- Click **Install**
+
+> ✅ **Checkpoint 4:** Click on each of the three extensions in the panel. You should see an **"Uninstall"** button (which means they are installed). All three — Python, Jupyter, and Colab — should show as installed.
+
+---
+
+## Step 5 — Enable Auto-Save in VSCode
+
+Auto-save means VSCode will automatically save your files as you type. This prevents a very common mistake where code doesn't run because the file wasn't saved.
+
+1. In VSCode, click **File** in the top menu bar (on Mac this is at the very top of the screen)
+2. Look for **Auto Save** in the dropdown
+3. Click **Auto Save** to enable it — a checkmark ✓ will appear next to it
+
+> ✅ **Checkpoint 5:** Click **File** again and confirm you can see a **✓ checkmark** next to "Auto Save".
+
+---
+
+## Step 6 — Connect VSCode with GitHub
 
 GitHub is the website where your course materials and assignments are stored. We need to link VSCode to your GitHub account so you can download and upload work.
 
@@ -206,80 +272,7 @@ GitHub is the website where your course materials and assignments are stored. We
 
 📹 [Watch: Configuring Git and Using Git in VSCode](https://drive.google.com/file/d/1kyBHa4G4K5bgTBVrA-doMxuZdfXr8jZp/view?usp=drive_link)
 
-> ✅ **Checkpoint 5:** In VSCode, look at the bottom-left corner of the window. You should see your **GitHub username** displayed. This confirms VSCode is connected to your GitHub account.
-
----
-
-## Step 6 — Install Miniconda
-
-Miniconda manages Python and all the software packages we use in this course. It lets us create isolated "environments" for different projects — like separate workspaces — so software from one project doesn't interfere with another.
-
-### For Mac (Apple Silicon — M1/M2/M3/M4)
-
-1. Open your **Terminal** (press ⌘ + Space, type Terminal, press Enter)
-2. Run the following commands **one at a time** — paste each line, press Enter, and wait for it to finish before running the next:
-
-**Step 6.1** — Create a folder for Miniconda:
-```bash
-mkdir -p ~/miniconda3
-```
-
-**Step 6.2** — Download Miniconda:
-```bash
-curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -o ~/miniconda3/miniconda.sh
-```
-
-This may take a minute or two. You'll see a progress bar.
-
-**Step 6.3** — Install Miniconda:
-```bash
-bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
-```
-
-Wait for the installation to complete.
-
-**Step 6.4** — Remove the installer file (it's no longer needed):
-```bash
-rm ~/miniconda3/miniconda.sh
-```
-
-**Step 6.5** — Activate Miniconda:
-```bash
-source ~/miniconda3/bin/activate
-```
-
-**Step 6.6** — Initialise Miniconda for all terminal types:
-```bash
-conda init --all
-```
-
-**Step 6.7** — **Close the Terminal window completely** and open a new one.
-
-### For Linux
-
-**Step 6.1** — Download Miniconda:
-```bash
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-```
-
-**Step 6.2** — Run the installer:
-```bash
-bash ~/Miniconda3-latest-Linux-x86_64.sh
-```
-
-Follow the prompts:
-- Press **Enter** to read the licence, then **Space** or **Enter** to scroll to the end
-- Type `yes` and press **Enter** to accept the licence
-- Press **Enter** to confirm the default installation location
-- Type `yes` and press **Enter** to initialise conda
-
-**Step 6.3** — Close your terminal and open a new one.
-
-> ✅ **Checkpoint 6:** In the **new** terminal window, your command prompt should now start with **(base)**, like this:
-> ```
-> (base) your-macbook-name ~ %
-> ```
-> The `(base)` part means Miniconda is installed and running correctly. If you don't see `(base)`, try closing and reopening the terminal. If it still doesn't appear, run `conda init --all` and try again.
+> ✅ **Checkpoint 6:** In VSCode, look at the bottom-left corner of the window. You should see your **GitHub username** displayed. This confirms VSCode is connected to your GitHub account.
 
 ---
 
@@ -348,7 +341,7 @@ Follow the full verification steps in the [Verification Guide](run_conda_python.
 |---------|------------|
 | `(base)` doesn't appear after installing Miniconda | Close and re-open the terminal. If still missing, run `conda init --all` in the terminal, then open a fresh terminal. |
 | VSCode says "cannot be opened" (Mac security warning) | Go to System Settings → Privacy & Security → scroll down → click "Open Anyway" |
-| `git` shows "command not found" on Mac | Run `xcode-select --install` and wait for it to finish |
+| Git install pop-up doesn't appear on Mac | Run `xcode-select --install` directly in the terminal |
 | `curl: command not found` (Linux) | Install curl first: `sudo apt install curl` |
 | DBGate won't open on Mac | Right-click the app and select "Open" instead of double-clicking |
 | Extensions don't appear after installing | Restart VSCode and check the Extensions panel again |
