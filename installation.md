@@ -1,5 +1,25 @@
 # Module 1 First-Time Software Installation
 
+## ⚠️ Important — Read This First
+
+> **Intel Mac users:** Intel-based Macs are no longer supported. Please contact your instructor before proceeding.
+
+## 👇 Choose Your Operating System
+
+Go directly to the guide for your computer's operating system:
+
+| My computer runs... | Go to this guide |
+|---|---|
+| 🪟 **Windows** (any laptop or desktop running Windows 10 or 11) | **[→ Windows Installation Guide](guides/installation_windows.md)** |
+| 🍎 **Mac with Apple Silicon** (M1, M2, M3, or M4 chip) | **[→ Mac / Linux Installation Guide](guides/installation_mac_linux.md)** |
+| 🐧 **Linux** (Ubuntu, Fedora, Debian, etc.) | **[→ Mac / Linux Installation Guide](guides/installation_mac_linux.md)** |
+
+> **Not sure which Mac you have?** Click the  (Apple menu) → **About This Mac**. If "Chip" shows **Apple M1/M2/M3/M4**, you're on Apple Silicon. If "Processor" shows **Intel**, contact your instructor.
+
+Each guide includes step-by-step instructions written for users without a technical background, with checkpoints after every step so you can confirm each tool is working before moving on.
+
+---
+
 ## Hardware Requirements
 - Desktop/laptop computer running the latest version of macOS/Linux/Windows operating system (OS)
 - Recommended 16GB onboard memory (RAM) 
@@ -12,14 +32,17 @@
 
 ## Software Requirements
 
-| Software | Description | Platform | Details |
-|----------|-------------|----------|---------|
-| WSL | Windows Subsystem for Linux | Windows only | [Installation Guide](#wsl-for-windows) |
-| Visual Studio Code (VSCode) | Source code editor | All platforms | [Installation Guide](#visual-studio-code-vscode) |
-| Git CLI | Command-Line Interface for version control | All platforms | [Installation Guide](#git-cli) |
-| Conda/Miniconda | Package and environment manager | All platforms | [Installation Guide](#condaminiconda) |
-| DBGate/DBeaver | Database viewer | All platforms | [Installation Guide](#duckdb-browser-dbgate) |
-| Test Installation | Confirm if everything is working fine | All platforms | [Verification Guide](#verification-of-installation-mac-and-windows-users) |
+| Software | Description | Platform |
+|----------|-------------|----------|
+| WSL | Windows Subsystem for Linux | Windows only |
+| Visual Studio Code (VSCode) | Source code editor | All platforms |
+| Git CLI | Command-Line Interface for version control | All platforms |
+| Conda/Miniconda | Package and environment manager | All platforms |
+| DBGate/DBeaver | Database viewer | All platforms |
+
+All of the above are covered step-by-step in the guides linked above, including verification checkpoints.
+
+---
 
 ## WSL for Windows
 
