@@ -24,7 +24,7 @@
 By the end of this session, you will be able to:
 
 1. Navigate the course structure and understand the "1 Million Row" capstone goal.  
-2. Use **Google NotebookLM** to summarize technical documents and generate self-assessment quizzes.
+2. Use **Gemini Notebook** to summarize technical documents and generate self-assessment quizzes.
 3. Use **Discord** to share and discuss with facilitators and learners community.
 
 ---
