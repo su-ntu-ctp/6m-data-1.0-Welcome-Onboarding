@@ -41,3 +41,4 @@ print("Database and table created successfully with sample data.")
 print("Please use DBeaver or DBGate to check for 3 records.")
 
 
+#Doing assignment
