@@ -33,11 +33,12 @@ Each platform guide will walk you through installing all of the following:
 
 | Software | Description | Platform |
 |----------|-------------|----------|
-| WSL | Windows Subsystem for Linux | Windows only |
+| DBGate | Database viewer | All platforms |
+| WSL | Windows Subsystem for Linux | **Windows only** |
 | Git CLI | Command-line tool for version control | All platforms |
 | Conda/Miniconda | Python package and environment manager | All platforms |
 | Visual Studio Code (VSCode) | Source code editor | All platforms |
-| DBGate | Database viewer | All platforms |
+
 
 ---
 
