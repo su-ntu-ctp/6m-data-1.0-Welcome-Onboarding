@@ -30,7 +30,35 @@ This guide will walk you through installing all the software you need for this c
 
 ---
 
-## Step 1 — Install Git
+## Step 1 — Install DBGate
+
+DBGate is a database viewer we use to look at data stored in databases — think of it like Excel but for databases.
+
+1. Open your web browser and go to: **https://www.dbgate.io/download-community/**
+2. Click the **Mac** download button (choose the `.dmg` file for Apple Silicon)
+
+   **[Linux]:** Download the `.AppImage` or `.deb` file for your distribution
+
+3. **For Mac:** Once downloaded, double-click the `.dmg` file, then drag the DBGate app into your **Applications** folder. Open DBGate from Applications.
+
+   **[Linux .AppImage]:** Open a terminal and run:
+   ```bash
+   chmod +x ~/Downloads/dbgate-*.AppImage
+   ~/Downloads/dbgate-*.AppImage
+   ```
+
+   **[Linux .deb]:**
+   ```bash
+   sudo dpkg -i ~/Downloads/dbgate-*.deb
+   ```
+
+4. Open DBGate — if macOS shows a security warning, go to **System Settings → Privacy & Security** and click **"Open Anyway"**
+
+> ✅ **Checkpoint 7:** DBGate opens and you can see the main window with a sidebar showing "Connections". If the app opens successfully, the installation is complete.
+
+---
+
+## Step 2 — Install Git
 
 Git is a tool for saving and tracking changes in your code. Think of it as a very powerful "Track Changes" feature, but for code.
 
@@ -115,7 +143,7 @@ git config --global http.postBuffer 524288000
 
 ---
 
-## Step 2 — Install Miniconda
+## Step 3 — Install Miniconda
 
 Miniconda manages Python and all the software packages we use in this course. It lets us create isolated "environments" for different projects — like separate workspaces — so software from one project doesn't interfere with another.
 
@@ -215,7 +243,7 @@ Follow the prompts:
 
 ---
 
-## Step 3 — Install Visual Studio Code (VSCode)
+## Step 4 — Install Visual Studio Code (VSCode)
 
 VSCode is the text editor we use to write Python and SQL code. Think of it as Microsoft Word, but for code.
 
@@ -244,7 +272,7 @@ sudo apt install -f
 
 ---
 
-## Step 4 — Install VSCode Extensions
+## Step 5 — Install VSCode Extensions
 
 Extensions add extra features to VSCode. We need three extensions for this course.
 
@@ -272,7 +300,7 @@ Extensions add extra features to VSCode. We need three extensions for this cours
 
 ---
 
-## Step 5 — Enable Auto-Save in VSCode
+## Step 6 — Enable Auto-Save in VSCode
 
 Auto-save means VSCode will automatically save your files as you type. This prevents a very common mistake where code doesn't run because the file wasn't saved.
 
@@ -284,7 +312,7 @@ Auto-save means VSCode will automatically save your files as you type. This prev
 
 ---
 
-## Step 6 — Connect VSCode with GitHub
+## Step 7 — Connect VSCode with GitHub
 
 GitHub is the website where your course materials and assignments are stored. We need to link VSCode to your GitHub account so you can download and upload work.
 
@@ -304,34 +332,6 @@ GitHub is the website where your course materials and assignments are stored. We
 📹 [Watch: Configuring Git and Using Git in VSCode](https://drive.google.com/file/d/1kyBHa4G4K5bgTBVrA-doMxuZdfXr8jZp/view?usp=drive_link)
 
 > ✅ **Checkpoint 6:** In VSCode, look at the bottom-left corner of the window. You should see your **GitHub username** displayed. This confirms VSCode is connected to your GitHub account.
-
----
-
-## Step 7 — Install DBGate
-
-DBGate is a database viewer we use to look at data stored in databases — think of it like Excel but for databases.
-
-1. Open your web browser and go to: **https://www.dbgate.io/download-community/**
-2. Click the **Mac** download button (choose the `.dmg` file for Apple Silicon)
-
-   **[Linux]:** Download the `.AppImage` or `.deb` file for your distribution
-
-3. **For Mac:** Once downloaded, double-click the `.dmg` file, then drag the DBGate app into your **Applications** folder. Open DBGate from Applications.
-
-   **[Linux .AppImage]:** Open a terminal and run:
-   ```bash
-   chmod +x ~/Downloads/dbgate-*.AppImage
-   ~/Downloads/dbgate-*.AppImage
-   ```
-
-   **[Linux .deb]:**
-   ```bash
-   sudo dpkg -i ~/Downloads/dbgate-*.deb
-   ```
-
-4. Open DBGate — if macOS shows a security warning, go to **System Settings → Privacy & Security** and click **"Open Anyway"**
-
-> ✅ **Checkpoint 7:** DBGate opens and you can see the main window with a sidebar showing "Connections". If the app opens successfully, the installation is complete.
 
 ---
 
