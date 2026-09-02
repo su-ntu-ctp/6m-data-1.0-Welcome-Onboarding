@@ -23,7 +23,21 @@ This guide will walk you through installing all the software you need for this c
 
 ---
 
-## Step 1 — Install WSL (Windows Subsystem for Linux)
+## Step 1 — Install DBGate
+
+DBGate is a database viewer we use to look at data stored in databases. Think of it like Excel but for databases.
+
+1. Open your web browser and go to: **https://www.dbgate.io/download-community/**
+2. Download the **Windows installer** (the `.exe` file)
+3. Once downloaded, open the file and follow the installation steps (click Next → Install → Finish)
+4. After installing, open DBGate from your Start menu (search for "DBGate")
+
+> ✅ **Checkpoint 10:** DBGate opens and you see the application window with a left sidebar showing "Connections". If DBGate opens successfully, the installation is complete.
+
+---
+
+
+## Step 2 — Install WSL (Windows Subsystem for Linux)
 
 WSL lets you run Linux (a different operating system) inside Windows. Most data science tools were originally built for Linux, so we install WSL to get the best experience.
 
@@ -74,7 +88,7 @@ wsl --install
 
 ---
 
-## Step 2 — Update Ubuntu
+## Step 3 — Update Ubuntu
 
 Just like Windows Update, Linux needs to be kept up to date. Let's do that now.
 
@@ -101,7 +115,7 @@ sudo apt upgrade
 
 ---
 
-## Step 3 — Install Miniconda
+## Step 4 — Install Miniconda
 
 Miniconda manages Python and all the software packages we use in this course. It lets us create separate "environments" for different projects so they don't interfere with each other.
 
@@ -171,7 +185,7 @@ The installer will start. Follow these prompts carefully:
 
 ---
 
-## Step 4 — Install and Configure Git
+## Step 5 — Install and Configure Git
 
 Git is a tool for saving and tracking changes to your code. Think of it like a very powerful "Track Changes" feature in Word, but for code files.
 
@@ -230,7 +244,7 @@ Press **Enter**.
 
 ---
 
-## Step 5 — Install Visual Studio Code (VSCode)
+## Step 6 — Install Visual Studio Code (VSCode)
 
 VSCode is the text editor we use to write Python and SQL code. Think of it as Microsoft Word, but for code.
 
@@ -252,7 +266,7 @@ VSCode should open automatically when installation completes.
 
 ---
 
-## Step 6 — Connect VSCode to WSL
+## Step 7 — Connect VSCode to WSL
 
 Now we connect VSCode to the Ubuntu/Linux environment you installed in Steps 1–4. This is important — from this point forward, all coding will happen inside WSL.
 
@@ -267,7 +281,7 @@ Now we connect VSCode to the Ubuntu/Linux environment you installed in Steps 1�
 
 ---
 
-## Step 7 — Install VSCode Extensions
+## Step 8 — Install VSCode Extensions
 
 Extensions add extra features to VSCode. We need three extensions for this course.
 
@@ -296,7 +310,7 @@ Extensions add extra features to VSCode. We need three extensions for this cours
 
 ---
 
-## Step 8 — Enable Auto-Save in VSCode
+## Step 9 — Enable Auto-Save in VSCode
 
 Auto-save means VSCode will automatically save your files as you type. This prevents a lot of common errors where code doesn't run because you forgot to save.
 
@@ -308,7 +322,7 @@ Auto-save means VSCode will automatically save your files as you type. This prev
 
 ---
 
-## Step 9 — Connect VSCode with GitHub
+## Step 10 — Connect VSCode with GitHub
 
 GitHub is the website where your course materials and assignments are stored. We need to connect VSCode to your GitHub account so you can download and upload your work.
 
@@ -328,18 +342,6 @@ GitHub is the website where your course materials and assignments are stored. We
 
 ---
 
-## Step 10 — Install DBGate
-
-DBGate is a database viewer we use to look at data stored in databases. Think of it like Excel but for databases.
-
-1. Open your web browser and go to: **https://www.dbgate.io/download-community/**
-2. Download the **Windows installer** (the `.exe` file)
-3. Once downloaded, open the file and follow the installation steps (click Next → Install → Finish)
-4. After installing, open DBGate from your Start menu (search for "DBGate")
-
-> ✅ **Checkpoint 10:** DBGate opens and you see the application window with a left sidebar showing "Connections". If DBGate opens successfully, the installation is complete.
-
----
 
 ## Step 11 — Final Verification
 
